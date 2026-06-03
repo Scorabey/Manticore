@@ -1,0 +1,147 @@
+@use '../../../style/variable.scss' as *;
+@use '../../../style/mixin.scss' as *;
+
+// Reset Input
+
+.input {
+    padding: 0;
+    margin: 0;
+    outline: none;
+    border: none;
+    background-color: transparent;
+    transition: all 0.2s ease;
+}
+
+.inputIcon {
+    transition: all 0.2s ease;
+}
+
+// Set padding and gap to svg icon
+
+.inputIconLeft {
+    gap: 0.5em;
+    padding-left: 0.5em;
+}
+
+// Styles for wrapper
+
+.inputWrapper {
+    display: inline-flex;
+    flex-direction: row;
+    gap: 0.938em;
+    padding: 0.528em 0.938em;
+    border: 1px solid $Secondary-Placeholder;
+    border-radius: 6px;
+    background-color: $Dominant-Surface-04;
+    box-shadow: $Input-Inner-shadow;
+    transition: all 0.2s ease;
+    min-width: 13.34vw;
+
+    .input {
+        width: 100%;
+        color: $Secondary-Main;
+        @include Body;
+    }
+    .input::placeholder {
+        color: $Secondary-Placeholder;
+        @include Body;
+    }
+    .input:placeholder-shown {
+        border-color: $Secondary-Placeholder;
+    }
+
+    .inputIcon {
+        color: $Secondary-Placeholder;
+    }
+}
+
+// Hover state
+
+.inputWrapper:hover:not(:focus-within) {
+    @include State-Hover;
+
+    .input:hover::placeholder {
+        color: $Secondary-Hover;
+    }
+    .inputIcon {
+        color: $Secondary-Hover;
+    }
+}
+
+// Focus state
+
+.inputWrapper:focus-within {
+    @include State-Focus;
+
+    .inputIcon {
+        color: $Secondary-Main;
+    }
+    .input::placeholder {
+        color: $Secondary-Main;
+    }
+    .input:hover {
+        color: $Secondary-Main;
+    }
+}
+
+// Value state
+
+.inputWrapper:has(.input:not(:placeholder-shown)) {
+    @include State-Value;
+
+    .inputIcon {
+        color: $Secondary-Main;
+    }
+}
+
+// Disabled state
+
+.inputWrapper:has(.input:disabled) {
+    @include State-Disabled;
+
+    .input {
+        color: $Secondary-Light-Gray;
+        background-color: $Secondary-Placeholder;
+        border-color: $Secondary-Light-Gray;
+        cursor: not-allowed; 
+    }
+    .input::placeholder {
+        color: $Secondary-Light-Gray;
+    }
+
+    .inputIcon {
+        color: $Secondary-Light-Gray;
+    }
+}
+.inputWrapper:has(.input:disabled):hover {
+    @include State-Disabled;
+
+    .input::placeholder {
+        color: $Secondary-Light-Gray;
+    }
+}
+
+// Skeleton state
+
+.skeleton {
+    background-color: $Dominant-Surface-08;
+    position: relative;
+    min-width: 16vw;
+    min-height: 2.6vw;
+    overflow: hidden;
+    border-radius: 6px;
+
+    .bling {
+        background: $Bling-Gradient;
+        position: absolute;
+        min-width: 2.08vw;
+        min-height: 2.6vw;
+        left: -2vw;
+        animation: Loading 800ms infinite linear;
+    }
+}
+
+@keyframes Loading {
+    0% {left: -2vw;}
+    100% {left: 100%;}
+}

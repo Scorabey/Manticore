@@ -1,0 +1,104 @@
+@use './variable.scss' as *;
+
+// States
+
+@mixin State-Placeholder {
+    border: 1px solid $Secondary-Placeholder;
+    background-color: $Dominant-Surface-04;
+    box-shadow: $Input-Inner-shadow;
+}
+
+@mixin State-Hover {
+    border: 1px solid $Secondary-Hover;
+    background-color: $Dominant-Surface-06;
+}
+
+@mixin State-Focus {
+    border: 1px solid $Accent-Blue;
+    background-color: $Dominant-Surface-08;
+    box-shadow: 
+    $Input-Inner-shadow,
+    $Focused;
+}
+
+@mixin State-Value {
+    border: 1px solid $Secondary-Main;
+    background-color: $Dominant-Surface-08;
+}
+
+@mixin State-Error {
+    color: $Accent-Red;
+    border-color: $Accent-Red;
+    background-color: $Dominant-Surface-08;
+    box-shadow: 
+    $Input-Inner-shadow,
+    $Error;
+}
+
+@mixin State-Success {
+    border-color: $Accent-Green;
+    background-color: $Dominant-Surface-08;
+    box-shadow: 
+    $Input-Inner-shadow,
+    $Success;
+}
+
+@mixin State-Disabled {
+    border-color:$Secondary-Light-Gray;
+    background-color: $Secondary-Placeholder;
+    color: $Secondary-Light-Gray;
+    box-shadow: none;
+    cursor: not-allowed;
+}
+
+// Fonts
+
+@mixin Body {
+    font-size: 0.875rem;
+    font-weight: 500;
+    line-height: auto;
+    letter-spacing: 0%;
+}
+
+@mixin Dotted {
+    font-size: 0.875rem;
+    font-weight: 500;
+    line-height: auto;
+    letter-spacing: 0%;
+    text-decoration: dotted;
+}
+
+@mixin H5 {
+    font-size: 1.125rem;
+    font-weight: 500;
+    line-height: auto;
+    letter-spacing: 0%;
+}
+
+@mixin H4 {
+    font-size: 1.5rem;
+    font-weight: 500;
+    line-height: auto;
+    letter-spacing: 0%;
+}
+
+@mixin H3 {
+    font-size: 2rem;
+    font-weight: 500;
+    line-height: auto;
+    letter-spacing: 0%;
+}
+
+@mixin Sub-Title {
+    font-size: 2.625rem;
+    font-weight: 500;
+    line-height: auto;
+    letter-spacing: 0%;
+}
+
+@mixin Title {
+    font-size: 3.375rem;
+    font-weight: 500;
+    line-height: auto;
+    letter-spacing: 0%;
+}

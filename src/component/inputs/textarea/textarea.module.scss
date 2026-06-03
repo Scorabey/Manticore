@@ -1,0 +1,98 @@
+@use '../../../style/variable.scss' as *;
+@use '../../../style/mixin.scss' as *;
+
+// Basic style
+
+.wrapperTextarea {
+    display: inline-flex;
+    flex-direction: column;
+    gap: 0.563em;
+    transition: all 0.2s ease;
+
+    .textarea {
+        display: flex;
+        padding: 0.643em 1.072em;
+        min-width: 13.34vw;
+        min-height: 7.3vw;
+        border-radius: 6px;
+        color: $Secondary-Main;
+        outline: none;
+        transition: all 0.2s ease;
+        @include Body;
+        @include State-Placeholder;
+    }
+    .label {
+        color: $Secondary-Main;
+        transition: all 0.2s ease;
+        @include Body;
+    }
+}
+
+// States
+
+.wrapperTextarea {
+
+    //Placeholder state
+    .textarea::placeholder {
+        color: $Secondary-Placeholder;
+    }
+
+    // Hover state
+    .textarea:hover:not(:focus):not(.error) {
+        @include State-Hover;
+    }
+    .textarea:hover:not(:focus):not(.error)::placeholder {
+        color: $Secondary-Hover;
+    }
+
+    // Focus state 
+    .textarea:focus:not(.error) {
+        @include State-Focus;
+    }
+    .textarea:focus:not(.error)::placeholder {
+        color: $Secondary-Main;
+    }
+    .textarea:focus:hover:not(.error)::placeholder {
+        color: $Secondary-Main;
+    }
+
+    // Value State
+    .textarea:not(:placeholder-shown):not(.error) {
+        @include State-Value;
+    }
+
+    // Disabled state
+    .textarea:disabled {
+        @include State-Disabled;
+        resize: none;
+    }
+    .textarea:disabled:hover {
+        @include State-Disabled;
+    }
+    .textarea:disabled:hover::placeholder {
+        @include State-Disabled;
+    }
+    .textarea:disabled::placeholder {
+        color: $Secondary-Light-Gray;
+    }
+    .textarea:disabled::-webkit-resizer {
+        background-color: none;
+        border-color: none;
+    }
+
+    // Success state
+    .success {
+        @include State-Success;
+    }
+    .success::placeholder {
+        color: $Secondary-Main
+    }
+
+    // Error state
+    .error {
+        @include State-Error;
+    }
+    .error::placeholder {
+        color: $Accent-Red;
+    }
+}
