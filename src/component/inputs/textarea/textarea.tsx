@@ -1,7 +1,7 @@
 import style from './textarea.module.scss'
 import { Input } from '@/lib/types'
 
-export function Textarea({ placeholder, isDisabled, state }: Input) {
+export function Textarea({ placeholder, isDisabled = false, state = null }: Input) {
 
     return (
         <label htmlFor="textarea" className={`${style.wrapperTextarea}`}>
