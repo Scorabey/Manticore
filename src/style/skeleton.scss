@@ -1,0 +1,20 @@
+@use './variable.scss' as *;
+
+.skeleton {
+    display: inline-flex;
+    background-color: $Dominant-Surface-08;
+    position: relative;
+    overflow: hidden;
+    border-radius: 6px;
+
+    .bling {
+        background: $Bling-Gradient;
+        position: absolute;
+        animation: Loading 800ms infinite linear;
+    }
+}
+
+@keyframes Loading {
+    0% {left: -2vw;}
+    100% {left: 100%;}
+}

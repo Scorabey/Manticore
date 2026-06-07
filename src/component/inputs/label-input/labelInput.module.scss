@@ -1,0 +1,98 @@
+@use '../../../style/mixin.scss' as *;
+@use '../../../style/variable.scss' as *;
+
+// Basic style
+.wrapperInput {
+    display: inline-flex;
+    position: relative;
+    flex-direction: column;
+    transition: all 0.2s ease;
+
+    .label {
+        color: $Secondary-Main;
+        @include Body;
+    }
+    .input {
+        display: flex;
+        min-width: 13.34vw;
+        margin-top: 0.64em;
+        margin-bottom: 0.21em;
+        color: $Secondary-Main;
+        @include Input;
+        @include Body;
+    }
+}
+
+// State
+.wrapperInput {
+    // State Placeholder
+    .input::placeholder {
+        color: $Secondary-Placeholder;
+    }
+
+    // State Hover
+    .input:hover:not(:focus):not(.error):not(.success):not(:disabled) {
+        @include State-Hover;
+    }
+    .input:hover:not(:focus):not(.error):not(.success):not(:disabled)::placeholder {
+        color: $Secondary-Hover;
+    }
+
+    // State Focused
+    .input:focus:not(.error) {
+        @include State-Focus;
+    }
+    .input:focus:not(.error)::placeholder {
+        color: $Secondary-Main;
+    }
+    .input:focus:hover:not(.error)::placeholder {
+         color: $Secondary-Main;
+    }
+
+    // State Value
+    .input:not(:placeholder-shown):not(.error):not(.success) {
+        @include State-Value;
+    }
+
+    // State Disabled
+    .input:disabled {
+        @include State-Disabled;
+    }
+    .input:disabled:hover {
+        @include State-Disabled;
+    }
+    .input:disabled:hover::placeholder {
+        @include State-Disabled;
+    }
+    .input:disabled::placeholder {
+        color: $Secondary-Light-Gray;
+    }
+
+    // State Error
+    .error {
+        @include State-Error;
+    }
+    .error::placeholder {
+        color: $Accent-Red;
+    }
+
+    // State Success
+    .success {
+        @include State-Success;
+    }
+    .success::placeholder {
+        color: $Secondary-Main;
+    }
+}
+
+// Required field
+.wrapperRequiredField {
+    display: flex;
+
+    .requiredField {
+
+    }
+    .requiredIcon {
+
+    }
+}

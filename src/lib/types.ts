@@ -1,3 +1,5 @@
+import React from "react"
+
 export enum State {
     success = 'success',
     error = 'error'
@@ -5,6 +7,9 @@ export enum State {
 
 export interface Input {
     placeholder: string
-    isDisabled: boolean
-    state: State | null
+    isDisabled?: boolean
+    state?: State | null
+    Icon?: React.ComponentType<React.SVGProps<SVGSVGElement>> | null
+    dataOverflow?: number
+    requiredField?: boolean
 }

@@ -1,5 +1,6 @@
 @use '../../../style/variable.scss' as *;
 @use '../../../style/mixin.scss' as *;
+@use '../../../style/skeleton.scss';
 
 // Reset Input
 
@@ -29,13 +30,8 @@
     display: inline-flex;
     flex-direction: row;
     gap: 0.938em;
-    padding: 0.528em 0.938em;
-    border: 1px solid $Secondary-Placeholder;
-    border-radius: 6px;
-    background-color: $Dominant-Surface-04;
-    box-shadow: $Input-Inner-shadow;
-    transition: all 0.2s ease;
     min-width: 13.34vw;
+    @include Input;
 
     .input {
         width: 100%;
@@ -57,39 +53,39 @@
 
 // Hover state
 
-.inputWrapper:hover:not(:focus-within) {
+.inputWrapper:hover:not(:focus-within):not(.error):not(.success) {
     @include State-Hover;
 
-    .input:hover::placeholder {
+    .input:hover:not(.error):not(.success)::placeholder {
         color: $Secondary-Hover;
     }
-    .inputIcon {
+    .inputIcon:not(.error):not(.success) {
         color: $Secondary-Hover;
     }
 }
 
 // Focus state
 
-.inputWrapper:focus-within {
+.inputWrapper:focus-within:not(.error) {
     @include State-Focus;
 
-    .inputIcon {
+    .inputIcon:not(.error) {
         color: $Secondary-Main;
     }
-    .input::placeholder {
+    .input:not(.error)::placeholder {
         color: $Secondary-Main;
     }
-    .input:hover {
+    .input:not(.error):hover {
         color: $Secondary-Main;
     }
 }
 
 // Value state
 
-.inputWrapper:has(.input:not(:placeholder-shown)) {
+.inputWrapper:has(.input:not(:placeholder-shown)):not(.error) {
     @include State-Value;
 
-    .inputIcon {
+    .inputIcon:not(.error) {
         color: $Secondary-Main;
     }
 }
@@ -121,27 +117,39 @@
     }
 }
 
+// Success state
+.success {
+    @include State-Success;
+    .inputIcon {
+        color: $Secondary-Main;
+    }
+    .input::placeholder {
+        color: $Secondary-Main;
+    }
+}
+// Error state
+.error {
+    @include State-Error;
+    .inputIcon {
+        color: $Accent-Red;
+    }
+    .input::placeholder {
+        color: $Accent-Red;
+    }
+    .input {
+        color: $Accent-Red;
+    }
+}
 // Skeleton state
 
 .skeleton {
-    background-color: $Dominant-Surface-08;
-    position: relative;
-    min-width: 16vw;
-    min-height: 2.6vw;
-    overflow: hidden;
-    border-radius: 6px;
+    min-width: 13.34vw;
+    min-width: 217px;
+    min-height: 2.43em;
 
     .bling {
-        background: $Bling-Gradient;
-        position: absolute;
-        min-width: 2.08vw;
-        min-height: 2.6vw;
+        min-width: 2.08em;
+        min-height: 100%;
         left: -2vw;
-        animation: Loading 800ms infinite linear;
     }
-}
-
-@keyframes Loading {
-    0% {left: -2vw;}
-    100% {left: 100%;}
 }

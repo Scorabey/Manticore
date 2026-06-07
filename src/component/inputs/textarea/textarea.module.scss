@@ -5,21 +5,17 @@
 
 .wrapperTextarea {
     display: inline-flex;
+    position: relative;
     flex-direction: column;
     gap: 0.563em;
     transition: all 0.2s ease;
 
     .textarea {
         display: flex;
-        padding: 0.643em 1.072em;
         min-width: 13.34vw;
         min-height: 7.3vw;
-        border-radius: 6px;
-        color: $Secondary-Main;
-        outline: none;
-        transition: all 0.2s ease;
         @include Body;
-        @include State-Placeholder;
+        @include Input;
     }
     .label {
         color: $Secondary-Main;
@@ -38,10 +34,10 @@
     }
 
     // Hover state
-    .textarea:hover:not(:focus):not(.error) {
+    .textarea:hover:not(:focus):not(.error):not(.success) {
         @include State-Hover;
     }
-    .textarea:hover:not(:focus):not(.error)::placeholder {
+    .textarea:hover:not(:focus):not(.error):not(.success)::placeholder {
         color: $Secondary-Hover;
     }
 
@@ -57,7 +53,7 @@
     }
 
     // Value State
-    .textarea:not(:placeholder-shown):not(.error) {
+    .textarea:not(:placeholder-shown):not(.error):not(.success) {
         @include State-Value;
     }
 
@@ -95,4 +91,24 @@
     .error::placeholder {
         color: $Accent-Red;
     }
+}
+
+// Too many character style
+.wrapperTextarea.error::after {
+    content: "-" attr(data-overflow) " character";
+    color: $Accent-Red;
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    @include Body;
+}
+
+// Required field
+.wrapperTextarea.field::before {
+    content: 'This is required field';
+    color: $Secondary-Placeholder;
+    position: absolute;
+    top: 0;
+    right: 0;
+    @include Body;
 }
