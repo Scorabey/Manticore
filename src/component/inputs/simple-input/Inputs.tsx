@@ -1,48 +1,92 @@
 import style from './Inputs.module.scss';
-import { Input } from '@/lib/types';
+import { Input, State } from '@/lib/types';
+import { XCircleIcon, InformationCircleIcon, CheckCircleIcon } from '@heroicons/react/20/solid';
 
-
-export function SimpleInput({ placeholder, isDisabled = false, state = null }: Input) {
+export function SimpleInput({ 
+    placeholder, 
+    isDisabled = false, 
+    state = null, 
+    requiredField = false }: Input) {
 
     return (
-        <label className={`${style.inputWrapper} ${state ? style[state] : ''}`}>
-            <input 
-            type="text" 
-            className={style.input} 
-            placeholder={isDisabled ? 'Disabled' : placeholder} 
-            disabled={isDisabled}
-            />
-        </label>
+        <div className={style.inputFrame}>
+            <div className={style.wrapperForm}>
+                <form className={`${style.inputForm} ${state ? style[state] : ''}`}>
+                    <input 
+                    type="text" 
+                    className={style.input} 
+                    placeholder={isDisabled ? 'Disabled' : placeholder} 
+                    disabled={isDisabled}
+                    />
+                </form>
+            </div>
+            {requiredField 
+                ? <RequiredFieldForm state={state}/>
+                : null}
+        </div>
     )
 }
 
-export function IconLeftInput({ placeholder, isDisabled = false, state = null, Icon = null }: Input) {
+export function IconLeftInput({ 
+    placeholder, 
+    isDisabled = false, 
+    state = null, 
+    Icon = null, 
+    requiredField = false }: Input) {
     
     return (
-        <label className={`${style.inputWrapper} ${style.inputIconLeft} ${state ? style[state] : ''}`}>
-            {Icon && <Icon className={style.inputIcon} width={20} height={20} />}
-            <input 
-            type="text" 
-            className={style.input} 
-            placeholder={isDisabled ? 'Disabled' : placeholder} 
-            disabled={isDisabled}
-            />
-        </label>
+        <div className={style.inputFrame}>
+            <div className={style.wrapperForm}>
+                <form className={`
+                    ${style.inputForm} 
+                    ${style.inputIcon} 
+                    ${state ? style[state] : ''}
+                    ${style.fixLeftPadding}
+                    `}>
+                    {Icon && <Icon className={style.inputIcon} width={20} height={20} />}
+                    <input 
+                    type="text" 
+                    className={style.input} 
+                    placeholder={isDisabled ? 'Disabled' : placeholder} 
+                    disabled={isDisabled}
+                    />
+                </form>
+            </div>
+            {requiredField 
+                ? <RequiredFieldForm state={state}/>
+                : null}
+        </div>
     )                                         
 }
 
-export function IconRightInput({ placeholder, isDisabled = false, state = null, Icon = null }: Input) {
+export function IconRightInput({ 
+    placeholder, 
+    isDisabled = false, 
+    state = null, 
+    Icon = null, 
+    requiredField = false }: Input) {
 
     return (
-        <label className={`${style.inputWrapper} ${style.inputIconLeft} ${state ? style[state] : ''}`}>
-            <input 
-            type="text" 
-            className={style.input} 
-            placeholder={isDisabled ? 'Disabled' : placeholder} 
-            disabled={isDisabled}
-            />
-            {Icon && <Icon className={style.inputIcon} width={20} height={20} />}
-        </label>
+        <div className={style.inputFrame}>
+            <div className={style.wrapperForm}>
+                <form className={`
+                    ${style.inputForm} 
+                    ${style.inputIcon} 
+                    ${state ? style[state] : ''}
+                    `}>
+                    <input 
+                    type="text" 
+                    className={style.input} 
+                    placeholder={isDisabled ? 'Disabled' : placeholder} 
+                    disabled={isDisabled}
+                    />
+                    {Icon && <Icon className={style.inputIcon} width={20} height={20} />}
+                </form>
+            </div>
+            {requiredField 
+                ? <RequiredFieldForm state={state}/>
+                : null}
+        </div>
     )
 }
 
@@ -50,6 +94,30 @@ export function InputSkeleton() {
     return (
         <div className={style.skeleton}>
             <div className={style.bling}></div>
+        </div>
+    )
+}
+
+function RequiredFieldForm({ state }: { state: State | null }) {
+    return (
+        <div className={style.fieldFrame}>
+            {state === null && <InformationCircleIcon height={20} width={20} className={`
+                ${style.requiredIcon}
+                ${state ? style[state] : ''}
+                `}/>}
+            {state === 'success' && <CheckCircleIcon height={20} width={20} className={`
+                ${style.requiredIcon}
+                ${state ? style[state] : ''}
+                `}/>}
+            {state === 'error' && <XCircleIcon height={20} width={20} className={`
+                ${style.requiredIcon}
+                ${state ? style[state] : ''}
+                `}/>}
+            <label 
+            className={`
+                ${style.requiredLabel}
+                ${state ? style[state] : ''}
+                `}>This is required field</label>
         </div>
     )
 }
