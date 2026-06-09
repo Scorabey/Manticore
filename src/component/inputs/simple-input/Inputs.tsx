@@ -1,5 +1,5 @@
 import style from './Inputs.module.scss';
-import { Input, State } from '@/lib/types';
+import type { Input, State } from '@/lib/types';
 import { XCircleIcon, InformationCircleIcon, CheckCircleIcon } from '@heroicons/react/20/solid';
 
 export function SimpleInput({ 
@@ -11,14 +11,18 @@ export function SimpleInput({
     return (
         <div className={style.inputFrame}>
             <div className={style.wrapperForm}>
-                <form className={`${style.inputForm} ${state ? style[state] : ''}`}>
+                <div 
+                className={`
+                ${style.inputForm} 
+                ${state ? style[state] : ''}
+                `}>
                     <input 
                     type="text" 
                     className={style.input} 
                     placeholder={isDisabled ? 'Disabled' : placeholder} 
                     disabled={isDisabled}
                     />
-                </form>
+                </div>
             </div>
             {requiredField 
                 ? <RequiredFieldForm state={state}/>
@@ -37,7 +41,8 @@ export function IconLeftInput({
     return (
         <div className={style.inputFrame}>
             <div className={style.wrapperForm}>
-                <form className={`
+                <div 
+                className={`
                     ${style.inputForm} 
                     ${style.inputIcon} 
                     ${state ? style[state] : ''}
@@ -50,7 +55,7 @@ export function IconLeftInput({
                     placeholder={isDisabled ? 'Disabled' : placeholder} 
                     disabled={isDisabled}
                     />
-                </form>
+                </div>
             </div>
             {requiredField 
                 ? <RequiredFieldForm state={state}/>
@@ -69,7 +74,8 @@ export function IconRightInput({
     return (
         <div className={style.inputFrame}>
             <div className={style.wrapperForm}>
-                <form className={`
+                <div 
+                className={`
                     ${style.inputForm} 
                     ${style.inputIcon} 
                     ${state ? style[state] : ''}
@@ -81,7 +87,7 @@ export function IconRightInput({
                     disabled={isDisabled}
                     />
                     {Icon && <Icon className={style.inputIcon} width={20} height={20} />}
-                </form>
+                </div>
             </div>
             {requiredField 
                 ? <RequiredFieldForm state={state}/>
@@ -121,5 +127,3 @@ function RequiredFieldForm({ state }: { state: State | null }) {
         </div>
     )
 }
-
-export default SimpleInput

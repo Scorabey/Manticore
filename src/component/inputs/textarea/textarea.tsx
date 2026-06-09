@@ -2,13 +2,13 @@
 
 import { useEffect, useState } from 'react'
 import style from './textarea.module.scss'
-import { Input } from '@/lib/types'
+import type { Input } from '@/lib/types'
 
 export function Textarea({ 
     placeholder, 
     isDisabled = false, 
     state = null, 
-    dataOverflow = 0,
+    dataOverflow = 255,
     requiredField = false }: Input) {
     const [value, setValue] = useState('')
 
@@ -42,5 +42,13 @@ export function Textarea({
             disabled={isDisabled}
             />
         </label>
+    )
+}
+
+export function TextareaSkeleton() {
+    return (
+        <div className={style.skeleton}>
+            <div className={style.bling}></div>
+        </div>
     )
 }

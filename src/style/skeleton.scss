@@ -8,6 +8,8 @@
     border-radius: 6px;
 
     .bling {
+        min-width: 13.39%;
+        min-height: 100%;
         background: $Bling-Gradient;
         position: absolute;
         animation: Loading 800ms infinite linear;

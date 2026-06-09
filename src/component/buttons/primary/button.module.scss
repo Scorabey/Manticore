@@ -1,0 +1,36 @@
+@use '../../../style/mixin.scss' as *;
+@use '../../../style/variable.scss' as *;
+@use '../../../style/skeleton.scss';
+
+// Basic styles
+
+.buttonFrame {
+    display: inline-flex;
+    position: relative;
+    justify-content: center;
+    align-items: center;
+    min-width: fit-content;
+    min-height: fit-content;
+
+    .button {
+        @include Button(blue);
+        @include Body;
+    }
+}
+
+// Button states
+
+.buttonFrame {
+    // Hover
+    .button:hover {
+        @include Button-State-Hover(blue);
+    }
+    // Pressed
+    .button:active {
+        @include Button-State-Pressed(blue);
+    }
+    // Disabled
+    .button:disabled {
+        @include Button-State-Disabled;
+    }
+}

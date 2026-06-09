@@ -13,3 +13,7 @@ export interface Input {
     dataOverflow?: number
     requiredField?: boolean
 }
+
+export interface Button {
+    content: string
+}

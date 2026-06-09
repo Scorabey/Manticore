@@ -77,3 +77,74 @@ $Focused: 0px 0px 2px 0px $Accent-Blue;
 $Error: 0px 0px 2px 0px $Accent-Red;
 
 $Success: 0px 0px 2px 0px $Accent-Green;
+
+// Button map theme system
+
+$Button-Themes: (
+    dark: (
+        bg: $Dark-Gradient,
+        border: $Buttons-Dark,
+        text: $Secondary-Main
+    ),
+    blue: (
+        bg: $Blue-Gradient,
+        border: $Buttons-Dark-Blue,
+        text: $Secondary-Main
+    ),
+    red: (
+        bg: $Red-Gradient,
+        border: $Buttons-Dark-Red,
+        text: $Secondary-Main
+    ),
+    light: (
+        bg: $Light-Gradient,
+        border: $Buttons-Dark-Light,
+        text: $Dominant-BG
+    )
+);
+
+$Button-Themes-Hover: (
+    dark: (
+        bg: $Dark-Gradient-Hover,
+        border: $Buttons-Dark,
+        text: $Secondary-Main
+    ),
+    blue: (
+        bg: $Blue-Gradient-Hover,
+        border: $Buttons-Dark-Blue,
+        text: $Secondary-Main
+    ),
+    red: (
+        bg: $Red-Gradient-Hover,
+        border: $Buttons-Dark-Red,
+        text: $Secondary-Main
+    ),
+    light: (
+        bg: $Light-Gradient-Hover,
+        border: $Buttons-Dark-Light,
+        text: $Dominant-BG
+    )
+);
+
+$Button-Themes-Pressed: (
+    dark: (
+        bg: $Buttons-Dark,
+        border: $Buttons-Dark,
+        text: $Secondary-Main
+    ),
+    blue: (
+        bg: $Buttons-Dark-Blue,
+        border: $Buttons-Dark-Blue,
+        text: $Secondary-Main
+    ),
+    red: (
+        bg: $Buttons-Dark-Red,
+        border: $Buttons-Dark-Red,
+        text: $Secondary-Main
+    ),
+    light: (
+        bg: $Buttons-Dark-Light,
+        border: $Buttons-Dark-Light,
+        text: $Dominant-BG
+    )
+);

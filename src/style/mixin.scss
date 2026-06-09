@@ -1,6 +1,6 @@
 @use './variable.scss' as *;
 
-// States
+// Input states
 
 @mixin Input {
     border: 1px solid $Secondary-Placeholder;
@@ -13,12 +13,12 @@
     transition: all 0.2s ease;
 }
 
-@mixin State-Hover {
+@mixin Input-State-Hover {
     border: 1px solid $Secondary-Hover;
     background-color: $Dominant-Surface-06;
 }
 
-@mixin State-Focus {
+@mixin Input-State-Focus {
     border: 1px solid $Accent-Blue;
     background-color: $Dominant-Surface-08;
     box-shadow: 
@@ -26,12 +26,12 @@
     $Focused;
 }
 
-@mixin State-Value {
+@mixin Input-State-Value {
     border: 1px solid $Secondary-Main;
     background-color: $Dominant-Surface-08;
 }
 
-@mixin State-Error {
+@mixin Input-State-Error {
     color: $Accent-Red;
     border-color: $Accent-Red;
     background-color: $Dominant-Surface-08;
@@ -40,7 +40,7 @@
     $Error;
 }
 
-@mixin State-Success {
+@mixin Input-State-Success {
     border-color: $Accent-Green;
     background-color: $Dominant-Surface-08;
     box-shadow: 
@@ -48,12 +48,64 @@
     $Success;
 }
 
-@mixin State-Disabled {
+@mixin Input-State-Disabled {
     border-color:$Secondary-Light-Gray;
     background-color: $Secondary-Placeholder;
     color: $Secondary-Light-Gray;
     box-shadow: none;
     cursor: not-allowed;
+}
+
+// Button states
+
+@mixin Button($theme: dark) {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    min-width: 3.477vw;
+    min-height: 0.9em;
+    padding: 0.563em 0.94em;
+    border-radius: 6px;
+    border-style: solid;
+    transition: all 0.2s ease;
+
+    // Style
+    $colors: map-get($map: $Button-Themes, $key: $theme);
+
+    background: map-get($map: $colors, $key: bg);
+    border-color: map-get($map: $colors, $key: border);
+    color: map-get($map: $colors, $key: text);
+}
+
+@mixin Button-State-Hover($theme: dark) {
+    $colors: map-get($map: $Button-Themes-Hover, $key: $theme);
+
+    background: map-get($map: $colors, $key: bg);
+    border-color: map-get($map: $colors, $key: border);
+    color: map-get($map: $colors, $key: text);
+}
+
+@mixin Button-State-Pressed($theme: dark) {
+    $colors: map-get($map: $Button-Themes-Pressed, $key: $theme);
+
+    background: map-get($map: $colors, $key: bg);
+    border-color: map-get($map: $colors, $key: border);
+    color: map-get($map: $colors, $key: text);
+}
+
+@mixin Button-State-Loading($theme: dark) {
+    $colors: map-get($map: $Button-Themes-Loading, $key: $theme);
+
+    background: map-get($map: $colors, $key: bg);
+    border-color: map-get($map: $colors, $key: border);
+    color: map-get($map: $colors, $key: text);
+}
+
+@mixin Button-State-Disabled {
+    background-color: $Secondary-Placeholder;
+    border-color: $Secondary-Light-Gray;
+    color: $Secondary-Light-Gray;
 }
 
 // Fonts

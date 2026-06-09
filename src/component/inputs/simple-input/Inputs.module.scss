@@ -61,7 +61,7 @@
 .wrapperForm {
     // Hover state
     .inputForm:hover:not(:focus-within):not(.error):not(.success) {
-        @include State-Hover;
+        @include Input-State-Hover;
 
         .input:hover:not(.error):not(.success)::placeholder {
             color: $Secondary-Hover;
@@ -73,7 +73,7 @@
 
     // Focus state
     .inputForm:focus-within:not(.error) {
-        @include State-Focus;
+        @include Input-State-Focus;
 
         .inputIcon:not(.error) {
             color: $Secondary-Main;
@@ -88,7 +88,7 @@
 
     // Value state
     .inputForm:has(.input:not(:placeholder-shown)):not(.error):not(.success) {
-        @include State-Value;
+        @include Input-State-Value;
 
         .inputIcon:not(.error) {
             color: $Secondary-Main;
@@ -97,7 +97,7 @@
 
     // Disabled state
     .inputForm:has(.input:disabled) {
-        @include State-Disabled;
+        @include Input-State-Disabled;
 
         .input {
             color: $Secondary-Light-Gray;
@@ -114,7 +114,7 @@
         }
     }
     .inputForm:has(.input:disabled):hover {
-        @include State-Disabled;
+        @include Input-State-Disabled;
 
         .input::placeholder {
             color: $Secondary-Light-Gray;
@@ -123,7 +123,7 @@
 
     // Success state
     .success {
-        @include State-Success;
+        @include Input-State-Success;
         .inputIcon {
             color: $Secondary-Main;
         }
@@ -133,7 +133,7 @@
     }
     // Error state
     .error {
-        @include State-Error;
+        @include Input-State-Error;
         .inputIcon {
             color: $Accent-Red;
         }
@@ -180,8 +180,6 @@
     min-height: 2.43em;
 
     .bling {
-        min-width: 2.08em;
-        min-height: 100%;
         left: -2vw;
     }
 }

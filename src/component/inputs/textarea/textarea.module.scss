@@ -1,5 +1,6 @@
 @use '../../../style/variable.scss' as *;
 @use '../../../style/mixin.scss' as *;
+@use '../../../style/skeleton.scss';
 
 // Basic style
 
@@ -35,7 +36,7 @@
 
     // Hover state
     .textarea:hover:not(:focus):not(.error):not(.success) {
-        @include State-Hover;
+        @include Input-State-Hover;
     }
     .textarea:hover:not(:focus):not(.error):not(.success)::placeholder {
         color: $Secondary-Hover;
@@ -43,7 +44,7 @@
 
     // Focus state 
     .textarea:focus:not(.error) {
-        @include State-Focus;
+        @include Input-State-Focus;
     }
     .textarea:focus:not(.error)::placeholder {
         color: $Secondary-Main;
@@ -54,19 +55,19 @@
 
     // Value State
     .textarea:not(:placeholder-shown):not(.error):not(.success) {
-        @include State-Value;
+        @include Input-State-Value;
     }
 
     // Disabled state
     .textarea:disabled {
-        @include State-Disabled;
+        @include Input-State-Disabled;
         resize: none;
     }
     .textarea:disabled:hover {
-        @include State-Disabled;
+        @include Input-State-Disabled;
     }
     .textarea:disabled:hover::placeholder {
-        @include State-Disabled;
+        @include Input-State-Disabled;
     }
     .textarea:disabled::placeholder {
         color: $Secondary-Light-Gray;
@@ -78,7 +79,7 @@
 
     // Success state
     .success {
-        @include State-Success;
+        @include Input-State-Success;
     }
     .success::placeholder {
         color: $Secondary-Main
@@ -86,7 +87,7 @@
 
     // Error state
     .error {
-        @include State-Error;
+        @include Input-State-Error;
     }
     .error::placeholder {
         color: $Accent-Red;
@@ -111,4 +112,13 @@
     top: 0;
     right: 0;
     @include Body;
+}
+
+.skeleton {
+    min-width: 14.9vw;
+    min-height: 8.2vw;
+
+    .bling {
+        left: -2vw;
+    }
 }
