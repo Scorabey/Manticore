@@ -16,4 +16,5 @@ export interface Input {
 
 export interface Button {
     content: string
+    themeColor: 'blue' | 'dark' | 'red'
 }

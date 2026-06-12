@@ -1,11 +1,17 @@
-import { Button } from "@/component/buttons/primary/button";
+import { SecondaryButton } from "@/component/buttons/secondary/button";
+import { PrimaryButton } from "@/component/buttons/primary/button";
 
 export default function Home() {
   return (
     <>
-    <Button 
-    content="Button"
+    <SecondaryButton
+    content="Secondary Button!"
+    themeColor={'blue'}
     />
+    <PrimaryButton 
+    content="Primary Button!"
+    themeColor={'red'}
+    />  
     </>
   );
 }

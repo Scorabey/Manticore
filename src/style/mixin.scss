@@ -56,58 +56,6 @@
     cursor: not-allowed;
 }
 
-// Button states
-
-@mixin Button($theme: dark) {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-    min-width: 3.477vw;
-    min-height: 0.9em;
-    padding: 0.563em 0.94em;
-    border-radius: 6px;
-    border-style: solid;
-    transition: all 0.2s ease;
-
-    // Style
-    $colors: map-get($map: $Button-Themes, $key: $theme);
-
-    background: map-get($map: $colors, $key: bg);
-    border-color: map-get($map: $colors, $key: border);
-    color: map-get($map: $colors, $key: text);
-}
-
-@mixin Button-State-Hover($theme: dark) {
-    $colors: map-get($map: $Button-Themes-Hover, $key: $theme);
-
-    background: map-get($map: $colors, $key: bg);
-    border-color: map-get($map: $colors, $key: border);
-    color: map-get($map: $colors, $key: text);
-}
-
-@mixin Button-State-Pressed($theme: dark) {
-    $colors: map-get($map: $Button-Themes-Pressed, $key: $theme);
-
-    background: map-get($map: $colors, $key: bg);
-    border-color: map-get($map: $colors, $key: border);
-    color: map-get($map: $colors, $key: text);
-}
-
-@mixin Button-State-Loading($theme: dark) {
-    $colors: map-get($map: $Button-Themes-Loading, $key: $theme);
-
-    background: map-get($map: $colors, $key: bg);
-    border-color: map-get($map: $colors, $key: border);
-    color: map-get($map: $colors, $key: text);
-}
-
-@mixin Button-State-Disabled {
-    background-color: $Secondary-Placeholder;
-    border-color: $Secondary-Light-Gray;
-    color: $Secondary-Light-Gray;
-}
-
 // Fonts
 
 @mixin Body {

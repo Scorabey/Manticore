@@ -1,0 +1,56 @@
+@use '../../../style/secondaryButtonMixin.scss' as *;
+@use '../../../style/variable.scss' as *;
+@use '../../../style/skeleton.scss';
+@use '../../../style/mixin.scss' as *;
+
+// Reset style
+
+.button {
+    appearance: none;
+    background: none;
+    border: none;
+    padding: 0;
+    font: inherit;
+    color: inherit;
+    cursor: pointer;
+    outline: inherit;
+    &:focus
+    :active {
+        outline: none;
+        background: none;
+    }
+}
+
+// Basic styles & States style
+
+.buttonFrame {
+    display: inline-flex;
+    position: relative;
+    justify-content: center;
+    align-items: center;
+    min-width: fit-content;
+    min-height: fit-content;
+
+    .button {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        min-width: 3.477vw;
+        min-height: 0.9em;
+        @include Body;
+
+        &:disabled {
+            @include Button-State-Disabled;
+        }
+    }
+
+        @each $theme in dark, red, blue {
+                &[data-overflow="#{$theme}"] .button {
+                    @include Button($theme);
+
+                    &:hover { @include Button-State-Hover($theme); }
+                    &:active { @include Button-State-Pressed($theme); }
+            }
+        } // Їбався з цім пару днів
+}

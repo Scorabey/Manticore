@@ -1,0 +1,45 @@
+@use './variable.scss' as *;
+
+@mixin Button($theme: dark) {
+    padding: 0.563em 0.94em;
+    border-radius: 6px;
+    border-style: solid;
+
+    // Style
+    $colors: map-get($map: $Primary-Button-Themes, $key: $theme);
+
+    background: map-get($map: $colors, $key: bg);
+    border-color: map-get($map: $colors, $key: border);
+    color: map-get($map: $colors, $key: text);
+}
+
+@mixin Button-State-Hover($theme: dark) {
+    $colors: map-get($map: $Primary-Button-Themes-Hover, $key: $theme);
+
+    background: map-get($map: $colors, $key: bg);
+    border-color: map-get($map: $colors, $key: border);
+    color: map-get($map: $colors, $key: text);
+}
+
+@mixin Button-State-Pressed($theme: dark) {
+    $colors: map-get($map: $Primary-Button-Themes-Pressed, $key: $theme);
+
+    background: map-get($map: $colors, $key: bg);
+    border-color: map-get($map: $colors, $key: border);
+    color: map-get($map: $colors, $key: text);
+    transform: scale(0.95);
+}
+
+@mixin Button-State-Loading($theme: dark) {
+    $colors: map-get($map: $Primary-Button-Themes-Loading, $key: $theme);
+
+    background: map-get($map: $colors, $key: bg);
+    border-color: map-get($map: $colors, $key: border);
+    color: map-get($map: $colors, $key: text);
+}
+
+@mixin Button-State-Disabled {
+    background-color: $Secondary-Placeholder;
+    border-color: $Secondary-Light-Gray;
+    color: $Secondary-Light-Gray;
+}

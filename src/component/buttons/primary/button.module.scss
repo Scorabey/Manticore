@@ -1,8 +1,27 @@
-@use '../../../style/mixin.scss' as *;
+@use '../../../style/primaryButtonMixin.scss' as *;
 @use '../../../style/variable.scss' as *;
 @use '../../../style/skeleton.scss';
+@use '../../../style/mixin.scss' as *;
 
-// Basic styles
+// Reset style
+
+.button {
+    appearance: none;
+    background: none;
+    border: none;
+    padding: 0;
+    font: inherit;
+    color: inherit;
+    cursor: pointer;
+    outline: inherit;
+    &:focus
+    :active {
+        outline: none;
+        background: none;
+    }
+}
+
+// Basic styles & States style
 
 .buttonFrame {
     display: inline-flex;
@@ -13,24 +32,25 @@
     min-height: fit-content;
 
     .button {
-        @include Button(blue);
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        min-width: 3.477vw;
+        min-height: 0.9em;
         @include Body;
-    }
-}
 
-// Button states
+        &:disabled {
+            @include Button-State-Disabled;
+        }
+    }
 
-.buttonFrame {
-    // Hover
-    .button:hover {
-        @include Button-State-Hover(blue);
-    }
-    // Pressed
-    .button:active {
-        @include Button-State-Pressed(blue);
-    }
-    // Disabled
-    .button:disabled {
-        @include Button-State-Disabled;
-    }
+        @each $theme in dark, red, blue {
+                &[data-overflow="#{$theme}"] .button {
+                    @include Button($theme);
+
+                    &:hover { @include Button-State-Hover($theme); }
+                    &:active { @include Button-State-Pressed($theme); }
+            }
+        }
 }
