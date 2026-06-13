@@ -1,9 +1,10 @@
 @use './variable.scss' as *;
 
 @mixin Button($theme: dark) {
-    padding: 0.563em 0.94em;
+    padding: $Padding-9px $Padding-15px;
     border-radius: 6px;
     border-style: solid;
+    gap: $Padding-8px;
 
     // Style
     $colors: map-get($map: $Secondary-Button-Themes, $key: $theme);

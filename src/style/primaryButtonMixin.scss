@@ -1,7 +1,7 @@
 @use './variable.scss' as *;
 
 @mixin Button($theme: dark) {
-    padding: 0.563em 0.94em;
+    padding: $Padding-9px $Padding-15px;
     border-radius: 6px;
     border-style: solid;
 

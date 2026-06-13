@@ -1,7 +1,7 @@
 import type { Button } from "@/lib/types";
 import style from './button.module.scss'
 
-export function PrimaryButton({ content, themeColor }: Button) {
+export function PrimaryButton({ content, themeColor = 'dark' }: Button) {
 
     return (
         <div 

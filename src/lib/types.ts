@@ -16,5 +16,6 @@ export interface Input {
 
 export interface Button {
     content: string
-    themeColor: 'blue' | 'dark' | 'red'
+    themeColor?: 'blue' | 'dark' | 'red'
+    Icon?: React.ComponentType<React.SVGProps<SVGSVGElement>> | null
 }

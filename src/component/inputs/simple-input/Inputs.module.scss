@@ -17,17 +17,13 @@
     transition: all 0.2s ease;
 }
 
-// Set padding and gap to svg icon
+// Input frame style
 
-.inputIcon {
-    gap: 0.5em;
-    padding-left: 0.5em;
-}
-
-// Fix left padding on input left icon
-
-.fixLeftPadding {
-    padding-left: 0.5em !important;
+.inputFrame {
+    display: inline-flex;
+    flex-direction: column;
+    max-width: fit-content;
+    max-height: fit-content;
 }
 
 // Styles for form
@@ -35,7 +31,7 @@
 .inputForm {
     display: inline-flex;
     flex-direction: row;
-    gap: 0.938em;
+    gap: $Padding-8px;
     min-width: 13.34vw;
     margin-bottom: 0.21em;
     @include Input;
@@ -59,6 +55,8 @@
 }
 
 .wrapperForm {
+    display: inline-flex;
+    max-width: fit-content;
     // Hover state
     .inputForm:hover:not(:focus-within):not(.error):not(.success) {
         @include Input-State-Hover;
@@ -151,7 +149,7 @@
     display: flex;
     flex-direction: row;
     align-items: center;
-    gap: 0.5em;
+    gap: $Padding-8px;
 
     .requiredIcon {
         color: $Secondary-Main;
