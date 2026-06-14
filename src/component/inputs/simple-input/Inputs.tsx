@@ -6,7 +6,9 @@ export function SimpleInput({
     placeholder, 
     isDisabled = false, 
     state = null, 
-    requiredField = false }: Input) {
+    requiredField = false, 
+    ...props 
+    }: Input) {
 
     return (
         <div className={style.inputFrame}>
@@ -21,6 +23,7 @@ export function SimpleInput({
                     className={style.input} 
                     placeholder={isDisabled ? 'Disabled' : placeholder} 
                     disabled={isDisabled}
+                    {...props}
                     />
                 </div>
             </div>

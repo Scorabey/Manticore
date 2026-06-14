@@ -9,14 +9,13 @@ export default function Home() {
     <SecondaryButton
     content="Secondary Button!"
     themeColor={'red'}
-    Icon={ShareIcon}
-    isDisabled={true}
+    Icon={<ShareIcon height={18} width={18}/>}
+    type="submit"
     />
     <PrimaryButton
     content="Primary Button!"
     themeColor={'red'}
-    Icon={ShareIcon}
-    isDisabled={true}
+    type="button"
     />
     </>
   );

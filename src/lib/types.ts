@@ -1,22 +1,25 @@
 import React from "react"
 
-export enum State {
-    success = 'success',
-    error = 'error'
-}
+export type State = 'success' | 'error'
 
-export interface Input {
+export type ThemeColor = 'blue' | 'red' | 'dark'
+
+export type ButtonType = 'submit' | 'button' | 'reset'
+
+export interface Input 
+    extends React.InputHTMLAttributes<HTMLInputElement> {
     placeholder: string
     isDisabled?: boolean
     state?: State | null
-    Icon?: React.ComponentType<React.SVGProps<SVGSVGElement>> | null
-    dataOverflow?: number
+    Icon?: React.ReactNode
+    maxCharacters?: number
     requiredField?: boolean
 }
 
-export interface Button {
+export interface Button 
+    extends Omit<React.ButtonHTMLAttributes<HTMLButtonElement>, "children"> {
     content: string
-    themeColor?: 'blue' | 'dark' | 'red'
-    Icon?: React.ComponentType<React.SVGProps<SVGSVGElement>> | null
-    isDisabled: boolean
+    themeColor?: ThemeColor
+    Icon?: React.ReactNode
+    className?: string
 }

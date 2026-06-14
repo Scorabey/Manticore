@@ -8,15 +8,16 @@ export function Textarea({
     placeholder, 
     isDisabled = false, 
     state = null, 
-    dataOverflow = 255,
-    requiredField = false }: Input) {
+    maxCharacters = 255,
+    requiredField = false,
+    }: Input) {
     const [value, setValue] = useState('')
 
     const showRequired = requiredField && value.length === 0 && state === null
 
-    const showCharacterField = value.length - dataOverflow
+    const showCharacterField = value.length - maxCharacters
 
-    const manyCharacterError = value.length > dataOverflow
+    const manyCharacterError = value.length > maxCharacters
 
     return (
         <label 
@@ -32,7 +33,6 @@ export function Textarea({
             <span className={`${style.label}`}>Textarea</span>
             <textarea
             value={value}
-            onChange={(event) => setValue(event.target.value)}
             name="textarea" 
             className={`
                 ${style.textarea} 
@@ -40,6 +40,7 @@ export function Textarea({
                 ${manyCharacterError ? style.error : ''}`} 
             placeholder={isDisabled ? 'Disabled' : placeholder} 
             disabled={isDisabled}
+            onChange={(event) => setValue(event.target.value)}
             />
         </label>
     )

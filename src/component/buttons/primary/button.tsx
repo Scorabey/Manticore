@@ -1,7 +1,12 @@
 import type { Button } from "@/lib/types";
 import style from './button.module.scss'
 
-export function PrimaryButton({ content, themeColor = 'dark', isDisabled = false }: Button) {
+export function PrimaryButton({ 
+    content, 
+    themeColor = 'dark',
+    className,
+    ...rest 
+    }: Button) {
 
     return (
         <div 
@@ -9,8 +14,8 @@ export function PrimaryButton({ content, themeColor = 'dark', isDisabled = false
         data-overflow={themeColor}
         >
             <button 
-            className={style.button}
-            disabled={isDisabled}
+            className={[style.button, className].filter(Boolean).join(" ")}
+            {...rest}
             >
                 {content}
             </button>

@@ -1,7 +1,13 @@
 import type { Button } from "@/lib/types";
 import style from './button.module.scss'
 
-export function SecondaryButton({ content, themeColor = 'dark', Icon = null, isDisabled = false }: Button) {
+export function SecondaryButton({ 
+    content, 
+    themeColor = 'dark', 
+    Icon,
+    className,
+    ...rest 
+    }: Button) {
 
     return (
         <div 
@@ -9,10 +15,10 @@ export function SecondaryButton({ content, themeColor = 'dark', Icon = null, isD
         data-overflow={themeColor}
         >
             <button 
-            className={style.button}
-            disabled={isDisabled}
+            className={[style.button, className].filter(Boolean).join(" ")}
+            {...rest}
             >
-                {Icon && <Icon className={style.inputIcon} width={18} height={18} />}
+                {Icon && Icon}
                 {content}
             </button>
         </div>
