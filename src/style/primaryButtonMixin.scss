@@ -39,7 +39,7 @@
 }
 
 @mixin Button-State-Disabled {
-    background-color: $Secondary-Placeholder;
+    background: $Secondary-Placeholder;
     border-color: $Secondary-Light-Gray;
     color: $Secondary-Light-Gray;
 }

@@ -15,9 +15,8 @@
     cursor: pointer;
     outline: inherit;
     &:focus
-    :active {
+    &:active {
         outline: none;
-        background: none;
     }
 }
 
@@ -40,18 +39,19 @@
         min-width: 3.477vw;
         min-height: 0.9em;
         @include Body;
-
-        &:disabled {
-            @include Button-State-Disabled;
-        }
     }
 
         @each $theme in dark, red, blue {
                 &[data-overflow="#{$theme}"] .button {
                     @include Button($theme);
 
-                    &:hover { @include Button-State-Hover($theme); }
-                    &:active { @include Button-State-Pressed($theme); }
+                    &:hover:not(:disabled) { @include Button-State-Hover($theme); }
+                    &:active:not(:disabled) { @include Button-State-Pressed($theme); }
+
+                    &:disabled {
+                        cursor: not-allowed;
+                        @include Button-State-Disabled;
+                    }
             }
         } // Їбався з цім пару днів
 }
