@@ -1,21 +1,13 @@
 import { SecondaryButton } from "@/component/buttons/secondary/button";
 import { PrimaryButton } from "@/component/buttons/primary/button";
 import { ShareIcon } from "@heroicons/react/24/outline";
-import { IconRightInput, IconLeftInput, SimpleInput } from "@/component/inputs/simple-input/Inputs";
+import { Input } from "@/component/inputs/input/input";
 
 export default function Home() {
   return (
     <>
-    <SecondaryButton
-    content="Secondary Button!"
-    themeColor={'red'}
-    Icon={<ShareIcon height={18} width={18}/>}
-    type="submit"
-    />
-    <PrimaryButton
-    content="Primary Button!"
-    themeColor={'red'}
-    type="button"
+    <Input 
+    placeholder="Input text..."
     />
     </>
   );

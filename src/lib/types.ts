@@ -6,17 +6,18 @@ export type ThemeColor = 'blue' | 'red' | 'dark'
 
 export type ButtonType = 'submit' | 'button' | 'reset'
 
-export interface Input 
+export interface InputProps
     extends React.InputHTMLAttributes<HTMLInputElement> {
     placeholder: string
     isDisabled?: boolean
     state?: State | null
-    Icon?: React.ReactNode
+    RightIcon?: React.FunctionComponent<React.SVGProps<SVGSVGElement>>
+    LeftIcon?: React.FunctionComponent<React.SVGProps<SVGSVGElement>>
     maxCharacters?: number
     requiredField?: boolean
 }
 
-export interface Button 
+export interface ButtonProps
     extends Omit<React.ButtonHTMLAttributes<HTMLButtonElement>, "children"> {
     content: string
     themeColor?: ThemeColor

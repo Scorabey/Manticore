@@ -1,4 +1,4 @@
-import type { Button } from "@/lib/types";
+import type { ButtonProps } from "@/lib/types";
 import style from './button.module.scss'
 
 export function PrimaryButton({ 
@@ -6,7 +6,7 @@ export function PrimaryButton({
     themeColor = 'dark',
     className,
     ...rest 
-    }: Button) {
+    }: ButtonProps) {
 
     return (
         <div 

@@ -2,15 +2,15 @@
 
 import { useEffect, useState } from 'react'
 import style from './textarea.module.scss'
-import type { Input } from '@/lib/types'
+import type { InputProps } from '@/lib/types'
 
 export function Textarea({ 
-    placeholder, 
-    isDisabled = false, 
+    placeholder,
+    isDisabled = false,
     state = null, 
     maxCharacters = 255,
-    requiredField = false,
-    }: Input) {
+    requiredField = false
+    }: InputProps) {
     const [value, setValue] = useState('')
 
     const showRequired = requiredField && value.length === 0 && state === null

@@ -1,0 +1,43 @@
+@use '../../../style/mixin.scss' as *;
+@use '../../../style/variable.scss' as *;
+
+// Reset style input
+
+.input {
+    outline: none;
+    background: none;
+    border: none;
+}
+
+// Main styles
+
+.inputFrame {
+    display: block;
+    flex-direction: row;
+    position: relative;
+    margin: 0;
+    width: 9.02vw;
+    cursor: text;
+
+    @include Input;
+
+    .inputWrapper {
+        display: flex;
+        flex-direction: row;
+        width: 100%;
+        height: auto;
+        gap: $Padding-8px;
+
+        .input {
+            display: flex;
+            width: 100%;
+            height: auto;
+            color: $Secondary-Main;
+            
+            @include Body;
+        }
+        .input::placeholder {
+            color: $Secondary-Placeholder;
+        }
+    }
+}

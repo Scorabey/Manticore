@@ -1,4 +1,4 @@
-import type { Button } from "@/lib/types";
+import type { ButtonProps } from "@/lib/types";
 import style from './button.module.scss'
 
 export function SecondaryButton({ 
@@ -7,7 +7,7 @@ export function SecondaryButton({
     Icon,
     className,
     ...rest 
-    }: Button) {
+    }: ButtonProps) {
 
     return (
         <div 
