@@ -9,6 +9,10 @@
     border: none;
 }
 
+.iconLeft {
+    margin-left: -0.4415em;
+}
+
 // Main styles
 
 .inputFrame {
@@ -27,17 +31,86 @@
         width: 100%;
         height: auto;
         gap: $Padding-8px;
+        transition: all 0.2s ease;
 
         .input {
             display: flex;
             width: 100%;
             height: auto;
             color: $Secondary-Main;
+            transition: all 0.2s ease;
             
             @include Body;
         }
+    }
+}
+
+// States
+
+.inputFrame {
+    svg {
+        color: $Secondary-Placeholder;
+    }
+    // Placeholder state
+    .input::placeholder {
+        color: $Secondary-Placeholder;
+    }
+
+    // Hover state
+    &:hover:not(:focus-within):not(:has(.input:disabled)):not(:has(.input.filled)):not(.error):not(.success) {
+        @include Input-State-Hover;
+
+        svg {
+            color: $Secondary-Hover;
+        }
+
         .input::placeholder {
-            color: $Secondary-Placeholder;
+            color: $Secondary-Hover;
         }
     }
+
+    // Focus state
+    &:focus-within:not(.error) {
+        @include Input-State-Focus;
+
+        svg {
+            color: $Secondary-Main;
+        }
+
+        .input::placeholder {
+            color: $Secondary-Main;
+        }
+    }
+
+    // Value state
+    &:has(.input.filled):not(.error):not(.success) {
+        @include Input-State-Value;
+
+        svg {
+            color: $Secondary-Main;
+        }
+    }
+
+    // Disabled state
+    &:has(.input:disabled) {
+        cursor: not-allowed;
+        @include Input-State-Disabled;
+
+        svg {
+            color: $Secondary-Main;
+        }
+
+        .inputWrapper {
+            cursor: not-allowed;
+
+            .input {
+                cursor: not-allowed;
+            }
+
+            .input::placeholder {
+                color: $Secondary-Main;
+            }
+        }
+    }
+
 }

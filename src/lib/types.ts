@@ -9,7 +9,6 @@ export type ButtonType = 'submit' | 'button' | 'reset'
 export interface InputProps
     extends React.InputHTMLAttributes<HTMLInputElement> {
     placeholder: string
-    isDisabled?: boolean
     state?: State | null
     RightIcon?: React.FunctionComponent<React.SVGProps<SVGSVGElement>>
     LeftIcon?: React.FunctionComponent<React.SVGProps<SVGSVGElement>>

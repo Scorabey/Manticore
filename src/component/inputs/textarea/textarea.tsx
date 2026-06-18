@@ -1,17 +1,20 @@
 'use client'
 
-import { useEffect, useState } from 'react'
+import { useState, useId } from 'react'
 import style from './textarea.module.scss'
 import type { InputProps } from '@/lib/types'
 
 export function Textarea({ 
     placeholder,
-    isDisabled = false,
+    disabled = false,
     state = null, 
     maxCharacters = 255,
-    requiredField = false
+    requiredField = false,
+    className
     }: InputProps) {
     const [value, setValue] = useState('')
+
+    const id = useId()
 
     const showRequired = requiredField && value.length === 0 && state === null
 
@@ -21,7 +24,7 @@ export function Textarea({
 
     return (
         <label 
-        htmlFor="textarea" 
+        htmlFor={id} 
         className={`
             ${style.wrapperTextarea} 
             ${state ? style[state] : ''}
@@ -33,14 +36,15 @@ export function Textarea({
             <span className={`${style.label}`}>Textarea</span>
             <textarea
             value={value}
-            name="textarea" 
+            onChange={(event) => setValue(event.target.value)}
+            id={id}
             className={`
+                ${className ?? ''}
                 ${style.textarea} 
                 ${state ? style[state] : ''}
                 ${manyCharacterError ? style.error : ''}`} 
-            placeholder={isDisabled ? 'Disabled' : placeholder} 
-            disabled={isDisabled}
-            onChange={(event) => setValue(event.target.value)}
+            placeholder={disabled ? 'Disabled' : placeholder} 
+            disabled={disabled}
             />
         </label>
     )

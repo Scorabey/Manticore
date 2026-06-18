@@ -1,3 +1,5 @@
+'use client'
+
 import { SecondaryButton } from "@/component/buttons/secondary/button";
 import { PrimaryButton } from "@/component/buttons/primary/button";
 import { ShareIcon } from "@heroicons/react/24/outline";
@@ -8,6 +10,7 @@ export default function Home() {
     <>
     <Input 
     placeholder="Input text..."
+    LeftIcon={ShareIcon}
     />
     </>
   );
