@@ -22,6 +22,12 @@ export default function Home() {
     requiredField={true}
     state={'error'}
     />
+    <Input 
+    placeholder="Input text..."
+    label="Last name"
+    RightIcon={ShareIcon}
+    requiredField={true}
+    />
     </>
   );
 }

@@ -56,6 +56,7 @@
 
     .label {
         color: $Secondary-Main;
+        user-select: none;
 
         @include Body;
     }
@@ -66,12 +67,12 @@
         gap: $Padding-8px;
         color: $Secondary-Main;
         margin-top: -0.188em;
+        user-select: none;
 
         @include Body;
 
         svg {
             color: $Secondary-Main;
-            transform: rotate(180deg);
         }
     }
 }
@@ -156,13 +157,6 @@
                 color: $Secondary-Main;
             }
         }
-        .requiredField {
-            color: $Accent-Green;
-
-            svg {
-                color: $Accent-Green;
-            }
-        }
     }
 
     // Error
@@ -177,12 +171,24 @@
                 color: $Accent-Red;
             }
         }
-        .requiredField {
-            color: $Accent-Red;
+    }
+}
 
-            svg {
-                color: $Accent-Red;
-            }
+// Required states styles
+
+.frame {
+    .success {
+        color: $Accent-Green;
+
+        svg {
+            color: $Accent-Green;
+        }
+    }
+    .error {
+        color: $Accent-Red;
+
+        svg {
+            color: $Accent-Red;
         }
     }
 }

@@ -1,6 +1,6 @@
 import React from "react"
 
-export type State = 'success' | 'error'
+export type State = 'success' | 'error' | null
 
 export type ThemeColor = 'blue' | 'red' | 'dark'
 
