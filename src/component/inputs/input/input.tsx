@@ -8,6 +8,7 @@ export function Input({
     placeholder,
     RightIcon,
     LeftIcon,
+    label,
     disabled = false,
     type = 'text',
     className, }: InputProps) {
@@ -19,27 +20,30 @@ export function Input({
     const isFilled = value.length > 0
 
     return (
-        <label
-        className={style.inputFrame}
-        htmlFor={id}
-        >
-            <div className={style.inputWrapper}>
-                {LeftIcon && <LeftIcon className={`${style.iconLeft} ${style.icon}`} width={20}/>}
-                <input
-                value={value}
-                onChange={(event) => setValue(event.target.value)}
-                type={type}
-                id={id}
-                placeholder={disabled ? 'Disabled' : placeholder}
-                className={`
-                    ${style.input} 
-                    ${className ?? ''}
-                    ${isFilled ? style.filled : ''}
-                    `}
-                disabled={disabled}
-                />
-                {RightIcon && !LeftIcon ? <RightIcon className={`${style.iconRight} ${style.icon}`} width={20}/> : null}
-            </div>
-        </label>
+        <div className={style.frame}>
+            {label && <span className={style.label}>{label}</span>}
+            <label
+            className={style.inputFrame}
+            htmlFor={id}
+            >
+                <div className={style.inputWrapper}>
+                    {LeftIcon && <LeftIcon className={`${style.iconLeft} ${style.icon}`} width={20}/>}
+                    <input
+                    value={value}
+                    onChange={(event) => setValue(event.target.value)}
+                    type={type}
+                    id={id}
+                    placeholder={disabled ? 'Disabled' : placeholder}
+                    className={`
+                        ${style.input} 
+                        ${className ?? ''}
+                        ${isFilled ? style.filled : ''}
+                        `}
+                    disabled={disabled}
+                    />
+                    {RightIcon && !LeftIcon ? <RightIcon className={`${style.iconRight} ${style.icon}`} width={20}/> : null}
+                </div>
+            </label>
+        </div>
     )
 }

@@ -15,33 +15,51 @@
 
 // Main styles
 
-.inputFrame {
-    display: block;
-    flex-direction: row;
+.frame {
+    display: flex;
     position: relative;
+    flex-direction: column;
+    gap: $Padding-9px;
     margin: 0;
-    width: 9.02vw;
-    cursor: text;
+    padding: 0;
+    width: fit-content;
+    color: $Secondary-Main;
 
-    @include Input;
+    @include Body;
 
-    .inputWrapper {
-        display: flex;
+    .inputFrame {
+        display: block;
         flex-direction: row;
-        width: 100%;
-        height: auto;
-        gap: $Padding-8px;
-        transition: all 0.2s ease;
+        position: relative;
+        margin: 0;
+        width: 9.02vw;
+        cursor: text;
 
-        .input {
+        @include Input;
+
+        .inputWrapper {
             display: flex;
+            flex-direction: row;
             width: 100%;
             height: auto;
-            color: $Secondary-Main;
+            gap: $Padding-8px;
             transition: all 0.2s ease;
-            
-            @include Body;
+
+            .input {
+                display: flex;
+                width: 100%;
+                height: auto;
+                color: $Secondary-Main;
+                transition: all 0.2s ease;
+                
+                @include Body;
+            }
         }
+    }
+
+    .label {
+        top: 0;
+        left: 0;
     }
 }
 

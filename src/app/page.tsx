@@ -10,7 +10,13 @@ export default function Home() {
     <>
     <Input 
     placeholder="Input text..."
-    LeftIcon={ShareIcon}
+    label="First name"
+    RightIcon={ShareIcon}
+    />
+    <Input 
+    placeholder="Input text..."
+    label="Last name"
+    RightIcon={ShareIcon}
     />
     </>
   );

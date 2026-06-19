@@ -14,6 +14,7 @@ export interface InputProps
     LeftIcon?: React.FunctionComponent<React.SVGProps<SVGSVGElement>>
     maxCharacters?: number
     requiredField?: boolean
+    label?: string
 }
 
 export interface ButtonProps
