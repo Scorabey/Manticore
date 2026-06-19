@@ -12,11 +12,15 @@ export default function Home() {
     placeholder="Input text..."
     label="First name"
     RightIcon={ShareIcon}
+    requiredField={true}
+    state={'success'}
     />
     <Input 
     placeholder="Input text..."
     label="Last name"
     RightIcon={ShareIcon}
+    requiredField={true}
+    state={'error'}
     />
     </>
   );

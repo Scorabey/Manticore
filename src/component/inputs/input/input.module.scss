@@ -23,9 +23,6 @@
     margin: 0;
     padding: 0;
     width: fit-content;
-    color: $Secondary-Main;
-
-    @include Body;
 
     .inputFrame {
         display: block;
@@ -58,8 +55,24 @@
     }
 
     .label {
-        top: 0;
-        left: 0;
+        color: $Secondary-Main;
+
+        @include Body;
+    }
+    .requiredField {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: $Padding-8px;
+        color: $Secondary-Main;
+        margin-top: -0.188em;
+
+        @include Body;
+
+        svg {
+            color: $Secondary-Main;
+            transform: rotate(180deg);
+        }
     }
 }
 
@@ -131,4 +144,45 @@
         }
     }
 
+    // Success
+    &.success {
+        @include Input-State-Success;
+
+        .input::placeholder {
+            color: $Secondary-Main
+        }
+        .inputWrapper {
+            svg {
+                color: $Secondary-Main;
+            }
+        }
+        .requiredField {
+            color: $Accent-Green;
+
+            svg {
+                color: $Accent-Green;
+            }
+        }
+    }
+
+    // Error
+    &.error {
+        @include Input-State-Error;
+
+        .input::placeholder {
+            color: $Accent-Red;
+        }
+        .inputWrapper {
+            svg {
+                color: $Accent-Red;
+            }
+        }
+        .requiredField {
+            color: $Accent-Red;
+
+            svg {
+                color: $Accent-Red;
+            }
+        }
+    }
 }

@@ -3,12 +3,15 @@
 import style from './input.module.scss';
 import type { InputProps } from '@/lib/types';
 import { useState, useId } from 'react';
+import { InformationCircleIcon } from '@heroicons/react/20/solid';
 
 export function Input({ 
     placeholder,
     RightIcon,
     LeftIcon,
     label,
+    state,
+    requiredField = false,
     disabled = false,
     type = 'text',
     className, }: InputProps) {
@@ -20,10 +23,13 @@ export function Input({
     const isFilled = value.length > 0
 
     return (
-        <div className={style.frame}>
+        <div className={`${style.frame}`}>
             {label && <span className={style.label}>{label}</span>}
             <label
-            className={style.inputFrame}
+            className={`
+                ${style.inputFrame}
+                ${state && style[state]}
+                `}
             htmlFor={id}
             >
                 <div className={style.inputWrapper}>
@@ -44,6 +50,7 @@ export function Input({
                     {RightIcon && !LeftIcon ? <RightIcon className={`${style.iconRight} ${style.icon}`} width={20}/> : null}
                 </div>
             </label>
+            {requiredField && <span className={style.requiredField}><InformationCircleIcon width={20}/>This is required field</span>}
         </div>
     )
 }
