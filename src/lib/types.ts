@@ -21,6 +21,14 @@ export interface ButtonProps
     extends Omit<React.ButtonHTMLAttributes<HTMLButtonElement>, "children"> {
     content: string
     themeColor?: ThemeColor
-    Icon?: React.ReactNode
+    Icon?: React.FunctionComponent<React.SVGProps<SVGSVGElement>>
+    className?: string
+}
+
+export interface BaseButtonProps
+    extends Omit<React.ButtonHTMLAttributes<HTMLButtonElement>, "children" | "content"> {
+    content?: string | null 
+    themeColor?: ThemeColor
+    Icon: React.FunctionComponent<React.SVGProps<SVGSVGElement>>
     className?: string
 }

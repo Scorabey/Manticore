@@ -18,7 +18,7 @@ export const SecondaryButton = ({
             className={[style.button, className].filter(Boolean).join(" ")}
             {...rest}
             >
-                {Icon && Icon}
+                {Icon && <Icon width={20}/>}
                 {content}
             </button>
         </div>
