@@ -5,24 +5,29 @@ export const BaseButton = ({
     content = null, 
     Icon, 
     className,
-    themeColor = 'dark',
+    disabled = false,
+    onClick,
     ...rest }: BaseButtonProps) => {
+
+    const IsFilledContent = content !== null;
 
     return (
         <div 
         className={`
             ${style.buttonFrame}
             `}
-        data-overflow={themeColor}
         >
             <button 
             className={`
                 ${[style.button, className].filter(Boolean).join(" ")}
+                ${IsFilledContent ? style.content : undefined}
                 `}
+            onClick={onClick}
+            disabled={disabled}
             {...rest}
             >
                 {Icon && <Icon width={20}/>}
-                {content}
+                {disabled ? 'Disabled' : content}
             </button>
         </div>
     )

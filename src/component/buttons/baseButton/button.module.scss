@@ -1,0 +1,79 @@
+@use '../../../style/variable.scss' as *;
+@use '../../../style/skeleton.scss' as *;
+@use '../../../style/mixin.scss' as *;
+@use './baseButtonMixin.scss' as *;
+
+// Reset style
+
+.button {
+    appearance: none;
+    border: none;
+    padding: 0;
+    font: inherit;
+    color: inherit;
+    cursor: pointer;
+    outline: inherit;
+    &:focus
+    &:active {
+        outline: none;
+    }
+}
+
+// Basic style
+
+.buttonFrame {
+    display: inline-flex;
+    flex-direction: row;
+    margin: 0;
+
+    .button {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: row;
+        padding: $Padding-8px $Padding-8px;
+        border-radius: 100px;
+
+        @include Body;
+        @include Button;
+
+        svg {
+            color: $Secondary-Placeholder;
+        }
+    }
+}
+
+.buttonFrame {
+    .content {
+        padding: $Padding-8px $Padding-15px;
+        gap: $Padding-8px;
+    }
+}
+
+// States
+
+.buttonFrame {
+    // Hover
+    .button:hover {
+        @include Button-State-Hover;
+        svg {
+            color: $Secondary-Hover;
+        }
+    }
+
+    // Pressed
+    .button:active {
+        @include Button-State-Pressed;
+        svg {
+            color: $Secondary-Main;
+        }
+    }
+
+    // Disabled
+    .button:disabled {
+        @include Button-State-Disabled;
+        svg {
+            color: $Secondary-Light-Gray;
+        }
+    }
+}

@@ -1,4 +1,4 @@
-@use './variable.scss' as *;
+@use '../../../style/variable.scss' as *;
 
 @mixin Button($theme: dark) {
     padding: $Padding-9px $Padding-15px;
@@ -42,4 +42,6 @@
     background: $Secondary-Placeholder;
     border-color: $Secondary-Light-Gray;
     color: $Secondary-Light-Gray;
+    user-select: none;
+    cursor: not-allowed;
 }

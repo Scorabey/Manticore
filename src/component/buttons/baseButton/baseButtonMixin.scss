@@ -1,0 +1,29 @@
+@use '../../../style/variable.scss' as *;
+
+@mixin Button() {
+    background-color: $Dominant-BG;
+    border-style: solid;
+    border-width: 1px;
+    border-color: $Secondary-Placeholder;
+    color: $Secondary-Placeholder;
+}
+
+@mixin Button-State-Hover() {
+    background-color: $Dominant-Surface-04;
+    border-color: $Secondary-Hover;
+    color: $Secondary-Hover;
+}
+
+@mixin Button-State-Pressed() {
+    background-color: $Dominant-Surface-08;
+    border-color: $Secondary-Main;
+    color: $Secondary-Main;
+}
+
+@mixin Button-State-Disabled() {
+    background-color: $Secondary-Placeholder;
+    border-color: $Secondary-Light-Gray;
+    color: $Secondary-Light-Gray;
+    user-select: none;
+    cursor: not-allowed;
+}
