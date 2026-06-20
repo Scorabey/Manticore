@@ -4,14 +4,14 @@ import { useState, useId } from 'react'
 import style from './textarea.module.scss'
 import type { InputProps } from '@/lib/types'
 
-export function Textarea({ 
+export const Textarea = ({ 
     placeholder,
     disabled = false,
     state = null, 
     maxCharacters = 255,
     requiredField = false,
     className
-    }: InputProps) {
+    }: InputProps) => {
     const [value, setValue] = useState('')
 
     const id = useId()
@@ -57,3 +57,5 @@ export function TextareaSkeleton() {
         </div>
     )
 }
+
+export default Textarea

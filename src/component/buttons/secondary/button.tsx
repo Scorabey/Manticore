@@ -1,13 +1,13 @@
 import type { ButtonProps } from "@/lib/types";
 import style from './button.module.scss'
 
-export function SecondaryButton({ 
+export const SecondaryButton = ({ 
     content, 
     themeColor = 'dark', 
     Icon,
     className,
     ...rest 
-    }: ButtonProps) {
+    }: ButtonProps) => {
 
     return (
         <div 
@@ -24,3 +24,5 @@ export function SecondaryButton({
         </div>
     )
 }
+
+export default SecondaryButton

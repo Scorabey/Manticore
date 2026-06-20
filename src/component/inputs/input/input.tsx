@@ -1,11 +1,11 @@
 'use client'
 
 import style from './input.module.scss';
-import type { InputProps, State } from '@/lib/types';
+import type { InputProps } from '@/lib/types';
 import { useState, useId } from 'react';
 import { InformationCircleIcon, CheckCircleIcon, XCircleIcon } from '@heroicons/react/20/solid';
 
-export function Input({ 
+export const Input = ({ 
     placeholder,
     RightIcon,
     LeftIcon,
@@ -14,7 +14,7 @@ export function Input({
     requiredField = false,
     disabled = false,
     type = 'text',
-    className, }: InputProps) {
+    className, }: InputProps) => {
 
     const id = useId()
 
@@ -62,3 +62,5 @@ export function Input({
         </div>
     )
 }
+
+export default Input
