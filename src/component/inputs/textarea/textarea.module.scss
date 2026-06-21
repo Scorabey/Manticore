@@ -115,10 +115,18 @@
 }
 
 .skeleton {
-    min-width: 14.9vw;
-    min-height: 8.2vw;
+    pointer-events: none;
+    user-select: none;
 
+    .textareaSkeleton {
+        pointer-events: none;
+        user-select: none;
+        border: 0 !important;
+        background: $Dominant-Surface-08;
+        box-shadow: none;
+        resize: none;
+    }
     .bling {
-        left: -2vw;
+
     }
 }

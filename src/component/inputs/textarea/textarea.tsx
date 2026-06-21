@@ -50,12 +50,12 @@ export const Textarea = ({
     )
 }
 
-export function TextareaSkeleton() {
+export function Skeleton() {
     return (
-        <div className={style.skeleton}>
-            <div className={style.bling}></div>
-        </div>
+        <label className={`${style.wrapperTextarea} ${style.skeleton}`}>
+            <div className={`${style.bling}`}></div>
+            <span className={`${style.label} ${style.labelSkeleton}`}></span>
+            <textarea className={`${style.textarea} ${style.textareaSkeleton}`}/>
+        </label>
     )
 }
-
-export default Textarea
