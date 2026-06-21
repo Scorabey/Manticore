@@ -63,4 +63,19 @@ export const Input = ({
     )
 }
 
-export default Input
+export const InputSkeleton = () => {
+    return (
+        <div className={`${style.frame} ${style.skeleton}`}>
+            <div className={style.bling}></div>
+            <span className={style.label}></span>
+            <label className={`${style.inputFrame} ${style.elSkeleton}`}>
+                <div className={style.inputWrapper}>
+                    <input
+                    className={`${style.input}`}
+                    />
+                </div>
+            </label>
+            <span className={`${style.requiredField}`}></span>
+        </div>
+    )
+}

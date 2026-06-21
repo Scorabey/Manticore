@@ -6,6 +6,16 @@
     position: relative;
     overflow: hidden;
     border-radius: 6px;
+    user-select: none;
+
+    .elSkeleton {
+        pointer-events: none;
+        user-select: none;
+        border: 0 !important;
+        background: $Dominant-Surface-08;
+        box-shadow: none;
+        resize: none;
+    }
 
     .bling {
         min-width: 13.39%;
@@ -13,6 +23,8 @@
         background: $Bling-Gradient;
         position: absolute;
         animation: Loading 800ms infinite linear;
+        user-select: none;
+        z-index: 1000;
     }
 }
 

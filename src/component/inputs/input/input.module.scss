@@ -1,5 +1,6 @@
 @use '../../../style/mixin.scss' as *;
 @use '../../../style/variable.scss' as *;
+@use '../../../style/skeleton.scss' as *;
 
 // Reset style input
 
@@ -29,7 +30,7 @@
         flex-direction: row;
         position: relative;
         margin: 0;
-        width: 9.02vw;
+        min-width: 9.02vw;
         cursor: text;
 
         @include Input;
@@ -191,4 +192,18 @@
             color: $Accent-Red;
         }
     }
+}
+
+// Skeleton state
+
+.skeleton {
+    .elSkeleton {
+        pointer-events: none;
+        user-select: none;
+        border: 0 !important;
+        background: $Dominant-Surface-08;
+        box-shadow: none;
+        resize: none;
+    }
+    .bling {}
 }

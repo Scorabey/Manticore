@@ -1,1 +1,1 @@
-export { Textarea, Skeleton } from './textarea'
+export { Textarea, TextareaSkeleton } from './textarea'
