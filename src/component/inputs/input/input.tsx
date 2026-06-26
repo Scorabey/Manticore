@@ -3,7 +3,7 @@
 import style from './input.module.scss';
 import type { InputProps } from '@/lib/types';
 import { useState, useId } from 'react';
-import { InformationCircleIcon, CheckCircleIcon, XCircleIcon } from '@heroicons/react/20/solid';
+import { ExclamationCircleIcon, CheckCircleIcon, XCircleIcon } from '@heroicons/react/20/solid';
 
 export const Input = ({ 
     placeholder,
@@ -54,7 +54,7 @@ export const Input = ({
             className={`
                 ${style.requiredField} 
                 ${state && style[state]}`}>
-                    {state === null ? <InformationCircleIcon width={20}/> : null}
+                    {state === null ? <ExclamationCircleIcon width={20}/> : null}
                     {state === 'success' ? <CheckCircleIcon width={20}/> : null}
                     {state === 'error' ? <XCircleIcon width={20}/> : null}
                     This is required field

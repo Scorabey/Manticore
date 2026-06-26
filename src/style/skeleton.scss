@@ -7,6 +7,7 @@
     overflow: hidden;
     border-radius: 6px;
     user-select: none;
+    cursor: progress;
 
     .elSkeleton {
         pointer-events: none;
@@ -22,13 +23,24 @@
         min-height: 100%;
         background: $Bling-Gradient;
         position: absolute;
-        animation: Loading 800ms infinite linear;
+        animation: LoadingBling 800ms infinite linear;
         user-select: none;
         z-index: 1000;
     }
 }
 
-@keyframes Loading {
+.buttonSkeleton {
+    svg {
+        animation: Loader 1400ms infinite linear;
+    }
+}
+
+@keyframes LoadingBling {
     0% {left: -2vw;}
     100% {left: 100%;}
+}
+
+@keyframes Loader {
+    0% {transform: rotate(0deg);}
+    100% {transform: rotate(360deg);}
 }

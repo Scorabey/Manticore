@@ -32,3 +32,8 @@ export interface BaseButtonProps
     Icon: React.FunctionComponent<React.SVGProps<SVGSVGElement>>
     className?: string
 }
+
+export interface CheckBoxProps
+    extends React.InputHTMLAttributes<HTMLInputElement> {
+        content: string
+    }

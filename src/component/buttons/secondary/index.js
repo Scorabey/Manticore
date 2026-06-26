@@ -1,1 +1,1 @@
-export { SecondaryButton } from './button'
+export { SecondaryButton, SecondaryButtonSkeleton } from './button'

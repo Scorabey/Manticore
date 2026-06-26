@@ -33,6 +33,7 @@
         flex-direction: row;
         padding: $Padding-8px $Padding-8px;
         border-radius: 100px;
+        gap: $Padding-8px;
 
         @include Body;
         @include Button;
@@ -46,7 +47,6 @@
 .buttonFrame {
     .content {
         padding: $Padding-8px $Padding-15px;
-        gap: $Padding-8px;
     }
 }
 
@@ -54,7 +54,7 @@
 
 .buttonFrame {
     // Hover
-    .button:hover {
+    .button:not(:disabled):not(.buttonSkeleton):hover {
         @include Button-State-Hover;
         svg {
             color: $Secondary-Hover;
@@ -62,7 +62,7 @@
     }
 
     // Pressed
-    .button:active {
+    .button:not(:disabled):not(.buttonSkeleton):active {
         @include Button-State-Pressed;
         svg {
             color: $Secondary-Main;
@@ -74,6 +74,17 @@
         @include Button-State-Disabled;
         svg {
             color: $Secondary-Light-Gray;
+        }
+    }
+
+    // Loading
+    .buttonSkeleton {
+        cursor: progress;
+        user-select: none;
+
+        @include Button-State-Hover;
+        svg {
+            color: $Secondary-Hover;
         }
     }
 }

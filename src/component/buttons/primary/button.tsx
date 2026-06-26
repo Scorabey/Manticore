@@ -1,5 +1,6 @@
 import type { ButtonProps } from "@/lib/types";
-import style from './button.module.scss'
+import style from './button.module.scss';
+import { Loader } from 'react-feather';
 
 export const PrimaryButton = ({ 
     content, 
@@ -23,4 +24,23 @@ export const PrimaryButton = ({
     )
 }
 
-export default PrimaryButton
+export const PrimaryButtonSkeleton = ({
+    themeColor = 'dark'
+}) => {
+
+    return (
+        <div 
+        className={`
+        ${style.buttonFrame}
+        `}
+        data-overflow={themeColor}>
+            <button 
+            className={`
+            ${style.button}
+            ${style.buttonSkeleton}
+            `}>
+                <Loader width={20} height={20}/>
+            </button>
+        </div>
+    )
+}

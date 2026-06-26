@@ -1,5 +1,6 @@
 import { BaseButtonProps } from '@/lib/types'
 import style from './button.module.scss'
+import { Loader } from 'react-feather';
 
 export const BaseButton = ({ 
     content = null, 
@@ -33,4 +34,23 @@ export const BaseButton = ({
     )
 }
 
-export default BaseButton
+export const BaseButtonSkeleton = ({
+    onlyIcon = false
+}) => {
+
+    return (
+        <div 
+        className={`
+        ${style.buttonFrame}
+        `}>
+            <button 
+            className={`
+            ${style.button}
+            ${style.buttonSkeleton}
+            ${onlyIcon ? undefined : style.content}
+            `}>
+                <Loader width={20} height={20}/> {onlyIcon ? null : 'Loading'}
+            </button>
+        </div>
+    )
+}
