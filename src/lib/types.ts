@@ -36,4 +36,6 @@ export interface BaseButtonProps
 export interface CheckBoxProps
     extends React.InputHTMLAttributes<HTMLInputElement> {
         content: string
+        type?: 'checkbox' | 'radio'
+        disabled?: boolean
     }

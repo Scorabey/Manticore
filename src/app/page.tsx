@@ -6,16 +6,14 @@ import { ShareIcon } from "@heroicons/react/24/outline";
 import { Input, InputSkeleton } from "@/component/inputs/input";
 import { BaseButton, BaseButtonSkeleton } from "@/component/buttons/baseButton";
 import { Textarea, TextareaSkeleton } from "@/component/inputs/textarea";
+import { CheckBox } from "@/component/checkboxes/checkbox";
 
 export default function Home() {
   return (
     <>
-    <SecondaryButtonSkeleton />
-    <SecondaryButton 
-    content="Button"/>
-    <PrimaryButtonSkeleton />
-    <PrimaryButton 
-    content="Button"/>
+    <CheckBox 
+    content="Select"
+    type="checkbox"/>
     </>
   );
 }

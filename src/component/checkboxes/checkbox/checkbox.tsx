@@ -1,19 +1,29 @@
 import style from './checkbox.module.scss';
 import { CheckBoxProps } from '@/lib/types';
+import { useId } from 'react';
 
-export const CheckBox = ({ content }: CheckBoxProps) => {
+export const CheckBox = ({ 
+    content,
+    type = 'checkbox',
+    disabled = false }: CheckBoxProps) => {
+
+    const id = useId()
 
     return (
-        <div 
-        className={style.checkboxFrame}>
+        <label 
+        className={style.checkboxFrame}
+        htmlFor={id}>
             <input 
-            className={style.checkbox}
+            className={`${style[type]} ${style.input}`}
+            type={type}
+            id={id}
+            disabled={disabled}
             />
             <span 
             className={style.content}
             >
                 {content}
             </span>
-        </div>
+        </label>
     )
 }

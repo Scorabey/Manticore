@@ -1,2 +1,101 @@
 @use '../../../style/variable.scss' as *;
 @use '../../../style/mixin.scss' as *;
+
+// Reset style
+
+.checkbox,
+.radio {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    margin: 0;
+    padding: 0;
+}
+
+// Main styles
+
+.checkbox {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    min-width: 18px;
+    min-height: 18px;
+    display: inline-block;
+    cursor: pointer;
+    border: 1px solid $Secondary-Placeholder;
+    border-radius: 6px;
+    background-color: $Dominant-Surface-06;
+}
+
+.radio {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    min-width: 18px;
+    min-height: 18px;
+    display: inline-block;
+    cursor: pointer;
+    border: 1px solid $Secondary-Placeholder;
+    border-radius: 100%;
+    background-color: $Dominant-Surface-06;
+}
+
+.checkboxFrame {
+    display: inline-flex;
+    flex-direction: row;
+    align-items: center;
+    min-width: fit-content;
+    min-height: fit-content;
+    cursor: pointer;
+    gap: $Padding-8px;
+
+    .content {
+        color: $Secondary-Main;
+        user-select: none;
+        height: fit-content;
+
+        @include Body;
+    }
+
+    &:has(:not(input:checked)) {
+        .checkbox {
+            background-color: $Dominant-Surface-06;
+            border-color: $Secondary-Placeholder;
+        }
+        .radio {
+            background-color: $Dominant-Surface-06;
+            border-color: $Secondary-Placeholder;
+        }
+    }
+
+    &:has(input:checked) {
+        .checkbox {
+            background-color: $Accent-Blue;
+            border-color: $Accent-Blue;
+        }
+        .radio {
+            background-color: $Accent-Blue;
+            border-color: $Secondary-Placeholder;
+        }
+        .content {
+            color: $Secondary-Main;
+            font-weight: bold;
+        }
+    }
+    &:has(input:disabled) {
+        .checkbox {
+            background-color: $Secondary-Placeholder;
+            border-color: $Secondary-Placeholder;
+            cursor: not-allowed;
+        }
+        .radio {
+            background-color: $Secondary-Placeholder;
+            border-color: $Secondary-Light-Gray;
+            cursor: not-allowed;
+        }
+        .content {
+            color: $Secondary-Light-Gray;
+            font-weight: normal;
+        }
+    }
+}
