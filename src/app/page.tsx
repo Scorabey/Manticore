@@ -8,28 +8,18 @@ import { BaseButton, BaseButtonSkeleton } from "@/component/buttons/baseButton";
 import { Textarea, TextareaSkeleton } from "@/component/inputs/textarea";
 import { CheckBox } from "@/component/checkboxes/checkbox";
 import { useState } from "react";
+import { Switcher } from "@/component/checkboxes/switcher/switcher";
 
 export default function Home() {
-  const [checked, setChecked] = useState(false)
+  const [checked, setChecked] = useState(true)
+
+  const content = checked ? 'on' : 'off'
 
   return (
     <>
-    <CheckBox 
-    content="Select"
-    type="checkbox"
-    name="select"
-    checked={checked}
-    onChange={(e) => setChecked(e.target.checked)}/>
-    <CheckBox
-    content="Dark"
-    type="radio"
-    name="theme"
-    checked={checked}
-    onChange={(e) => setChecked(e.target.checked)}/>
-    <CheckBox 
-    content="Light"
-    type="radio"
-    name="theme"
+    <Switcher 
+    content={content}
+    name="switcher"
     checked={checked}
     onChange={(e) => setChecked(e.target.checked)}/>
     </>

@@ -1,0 +1,105 @@
+@use '../../../style/variable.scss' as *;
+@use '../../../style/mixin.scss' as *;
+
+// Reset styles
+
+.switcher {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    margin: 0;
+    padding: 0;
+}
+
+// Main styles
+
+.switcherFrame {
+    display: inline-flex;
+    position: relative;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    gap: $Padding-8px;
+    padding: $Padding-8px;
+    width: fit-content;
+    height: fit-content;
+    cursor: pointer;
+
+    .switcher {
+        display: inline-flex;
+        position: relative;
+        width: 32px;
+        height: 18px;
+        background-color: $Secondary-Placeholder;
+        border-radius: 100px;
+        cursor: pointer;
+
+        &::after {
+            content: '';
+            position: absolute;
+            width: 14px;
+            height: 14px;
+            top: 2px;
+            left: 2px;
+            background-color: $Secondary-Main;
+            border-radius: 100%;
+            transition: all 0.2s ease;
+        }
+    }
+
+    .content {
+        color: $Secondary-Main;
+        user-select: none;
+
+        @include Body;
+    }
+
+    // States default
+    &:has(:not(input:checked)) {
+        .switcher {
+            background-color: $Secondary-Placeholder;
+
+            &::after {
+                left: 2px;
+            }
+        }
+    }
+
+    // Checked
+    &:has(input:checked) {
+        .switcher {
+            background-color: $Accent-Blue;
+
+            &::after {
+                left: 16px;
+            }
+        }
+    }
+
+    // Disabled
+    &:has(input:disabled) {
+        .switcher {
+            &::after {
+                background-color: $Secondary-Light-Gray;
+            }
+        }
+        .content {
+            color: $Secondary-Light-Gray;
+        }
+    }
+
+    // Dis. Selected
+    &:has(input:disabled:checked) {
+        .switcher {
+            background-color: $Secondary-Placeholder;
+            
+            &::after {
+                left: 16px;
+                background-color: $Secondary-Light-Gray;
+            }
+        }
+        .content {
+            color: $Secondary-Light-Gray;
+        }
+    }
+}
