@@ -1,5 +1,6 @@
 @use '../../../style/variable.scss' as *;
 @use '../../../style/mixin.scss' as *;
+@use './checkbox.mixin.scss' as *;
 
 // Reset style
 
@@ -15,33 +16,20 @@
 // Main styles
 
 .checkbox {
-    display: inline-flex;
-    justify-content: center;
-    align-items: center;
-    min-width: 18px;
-    min-height: 18px;
-    display: inline-block;
-    cursor: pointer;
-    border: 1px solid $Secondary-Placeholder;
     border-radius: 6px;
-    background-color: $Dominant-Surface-06;
+
+    @include CheckBox;
 }
 
 .radio {
-    display: inline-flex;
-    justify-content: center;
-    align-items: center;
-    min-width: 18px;
-    min-height: 18px;
-    display: inline-block;
-    cursor: pointer;
-    border: 1px solid $Secondary-Placeholder;
     border-radius: 100%;
-    background-color: $Dominant-Surface-06;
+
+    @include CheckBox;
 }
 
 .checkboxFrame {
     display: inline-flex;
+    position: relative;
     flex-direction: row;
     align-items: center;
     min-width: fit-content;
@@ -57,45 +45,113 @@
         @include Body;
     }
 
+    svg {
+        position: absolute;
+        left: 2px;
+        opacity: 0;
+        color: $Secondary-Main;
+    }
+
+    // States default
+
     &:has(:not(input:checked)) {
         .checkbox {
-            background-color: $Dominant-Surface-06;
-            border-color: $Secondary-Placeholder;
+            @include CheckBox-State-Default;
         }
         .radio {
-            background-color: $Dominant-Surface-06;
-            border-color: $Secondary-Placeholder;
+            @include CheckBox-State-Default;
         }
     }
 
+    // Checked
+
     &:has(input:checked) {
         .checkbox {
-            background-color: $Accent-Blue;
-            border-color: $Accent-Blue;
+            @include CheckBox-State-Checked;
         }
         .radio {
-            background-color: $Accent-Blue;
-            border-color: $Secondary-Placeholder;
+            @include Radio-State-Checked;
+
+            &::after {
+                content: '';
+                display: block;
+                position: absolute;
+                background-color: $Secondary-Main;
+                top: 6px;
+                left: 6px;
+                width: 6px;
+                height: 6px;
+                border-radius: 100%;
+            }
         }
         .content {
             color: $Secondary-Main;
             font-weight: bold;
         }
+        svg {
+            opacity: 1;
+        }
     }
+
+    // Disabled
+
     &:has(input:disabled) {
+        cursor: not-allowed;
+
         .checkbox {
-            background-color: $Secondary-Placeholder;
-            border-color: $Secondary-Placeholder;
-            cursor: not-allowed;
+            @include CheckBox-State-Disabled;
         }
         .radio {
-            background-color: $Secondary-Placeholder;
-            border-color: $Secondary-Light-Gray;
-            cursor: not-allowed;
+            @include Radio-State-Disabled
         }
         .content {
             color: $Secondary-Light-Gray;
             font-weight: normal;
+        }
+    }
+
+    // Selected disabled
+
+    &:has(input:disabled:checked) {
+        cursor: not-allowed;
+
+        .checkbox {
+            @include CheckBox-State-Checked-Disabled;
+        }
+        .radio {
+            @include Radio-State-Checked-Disabled;
+
+            &::after {
+                background-color: $Secondary-Light-Gray;
+            }
+        }
+        .content {
+            color: $Secondary-Light-Gray;
+            font-weight: normal;
+        }
+        svg {
+            color: $Secondary-Light-Gray;
+            opacity: 1;
+        }
+    }
+
+    // Indeterminate
+
+    &:has(input:indeterminate) {
+        .checkbox {
+            background-color: $Accent-Blue;
+            border-color: $Accent-Blue;
+
+            &::after {
+                content: '';
+                position: absolute;
+                width: 12px;
+                height: 2px;
+                border-radius: 6px;
+                background-color: $Secondary-Main;
+                top: 8px;
+                left: 3px;
+            }
         }
     }
 }

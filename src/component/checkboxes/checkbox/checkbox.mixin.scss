@@ -1,0 +1,52 @@
+@use '../../../style/variable.scss' as *;
+
+@mixin CheckBox {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    min-width: 18px;
+    min-height: 18px;
+    display: inline-block;
+    cursor: pointer;
+    border: 1px solid $Secondary-Placeholder;
+    background-color: $Dominant-Surface-06;
+}
+
+@mixin CheckBox-State-Default {
+    background-color: $Dominant-Surface-06;
+    border-color: $Secondary-Placeholder;
+}
+
+@mixin CheckBox-State-Checked {
+    background-color: $Accent-Blue;
+    border-color: $Accent-Blue;
+}
+
+@mixin Radio-State-Checked {
+    background-color: $Accent-Blue;
+    border-color: $Secondary-Placeholder;
+}
+
+@mixin CheckBox-State-Disabled {
+    background-color: $Secondary-Placeholder;
+    border-color: $Secondary-Placeholder;
+    cursor: not-allowed;
+}
+
+@mixin Radio-State-Disabled {
+    background-color: $Secondary-Placeholder;
+    border-color: $Secondary-Light-Gray;
+    cursor: not-allowed;
+}
+
+@mixin CheckBox-State-Checked-Disabled {
+    background-color: $Secondary-Placeholder;
+    border-color: $Secondary-Placeholder;
+    cursor: not-allowed;
+}
+
+@mixin Radio-State-Checked-Disabled {
+    background-color: $Secondary-Placeholder;
+    border-color: $Secondary-Light-Gray;
+    cursor: not-allowed;
+}
