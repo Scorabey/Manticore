@@ -40,3 +40,12 @@ export interface CheckBoxProps
         type?: 'checkbox' | 'radio'
         indeterminate?: boolean
 }
+
+export interface ControlProps
+    extends Omit<React.ButtonHTMLAttributes<HTMLButtonElement>, 'onToggle'> {
+        content: string
+        label?: string | null
+        Icon?: React.FunctionComponent<React.SVGProps<SVGSVGElement>>
+        isOpen: boolean
+        onToggle: (isOpen: boolean) => void
+    }
