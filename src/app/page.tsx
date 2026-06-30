@@ -25,7 +25,9 @@ export default function Home() {
   return (
     <>
     <Dropdown 
-    option={option}/>
+    option={option}
+    label="Label"
+    multy={true}/>
     </>
   );
 }

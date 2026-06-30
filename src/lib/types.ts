@@ -55,15 +55,19 @@ export interface ControlProps
         Icon?: React.FunctionComponent<React.SVGProps<SVGSVGElement>>
         isOpen: boolean
         onToggle: (isOpen: boolean) => void
+        isValueState: boolean
     }
 
 export interface OptionsProps {
     value: OptionValue
-    label: OptionValue
+    children: React.ReactNode
     onSelect: (value: OptionValue) => void
     isSelected: boolean
+    multy: boolean
 }
 
 export interface DropdownProps {
     option: DropdownOption[]
+    label?: string
+    multy: true | false
 }

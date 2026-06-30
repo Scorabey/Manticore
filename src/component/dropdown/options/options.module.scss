@@ -20,9 +20,7 @@
 // Main style 
 
 .selectFrame {
-    display: inline-flex;
-    width: fit-content;
-    height: fit-content;
+    display: flex;
     flex-direction: row;
     padding: $Padding-9px $Padding-15px;
     gap: $Padding-15px;
@@ -30,15 +28,15 @@
     border-bottom: 1px solid $Secondary-Placeholder;
 
     span {
-        min-width: 9.67vw;
+        width: 80%;
         color: $Secondary-Main;
         user-select: none;
 
         @include Body;
     }
     svg {
-        color: $Secondary-Main;
-        opacity: 0;
+        color: $Accent-Blue;
+        opacity: 1;
     }
 }
 
@@ -51,7 +49,7 @@
     } 
 
     // Select
-    &:has(.selected) {
+    &.selected {
         background-color: $Dominant-Surface-08;
 
         span {

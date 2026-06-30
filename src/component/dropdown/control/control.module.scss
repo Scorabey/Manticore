@@ -18,8 +18,6 @@
     display: flex;
     flex-direction: column;
     gap: $Padding-8px;
-    width: fit-content;
-    height: fit-content;
     margin: 0;
     padding: 0;
 
@@ -56,7 +54,7 @@
 
 .buttonFrame {
     // Hover 
-    .button:not(:focus):not(:disabled):hover {
+    .button:not(:focus):not(:disabled):not(.value):hover {
         background: $Dark-Gradient-Hover;
         border-color: $Secondary-Hover;
 
@@ -94,6 +92,19 @@
         svg {
             color: $Secondary-Light-Gray;
             cursor: not-allowed;
+        }
+    }
+
+    // Value
+    .button.value {
+        background: $Dark-Gradient;
+        border-color: $Secondary-Main;
+
+        span {
+            color: $Secondary-Main;
+        }
+        svg {
+            color: $Secondary-Main;
         }
     }
 }

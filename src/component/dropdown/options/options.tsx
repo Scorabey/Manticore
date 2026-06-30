@@ -3,10 +3,11 @@ import { OptionsProps } from '@/lib/types'
 import { Check } from 'react-feather'
 
 export const Options = ({ 
-    label,
+    children,
     value,
     onSelect,
-    isSelected }: OptionsProps) => {
+    isSelected,
+    multy, }: OptionsProps) => {
     
     return (
         <div 
@@ -15,8 +16,8 @@ export const Options = ({
             ${isSelected ? style.selected : ''}`}
         data-value={value}
         onMouseDown={() => onSelect(value)}>
-            <span>{label}</span>
-            <Check width={20} height={20}/>
+            {children}
+            {multy ? <Check width={20} height={20}/> : null}
         </div>
     )
 }

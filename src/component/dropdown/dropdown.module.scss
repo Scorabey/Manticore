@@ -1,2 +1,23 @@
 @use '../../style/variable.scss' as *;
 @use '../../style/mixin.scss' as *;
+
+// Main style
+
+.dropdownFrame {
+    display: inline-flex;
+    flex-direction: column;
+    padding: 0;
+    margin: 0;
+    gap: 0;
+
+    .dropdownList {
+        display: flex;
+        flex-direction: column;
+        width: 12.98vw;
+    }
+
+    .unRoundBorder {
+        border-end-end-radius: 0;
+        border-end-start-radius: 0;
+    }
+}
