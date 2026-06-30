@@ -1,0 +1,64 @@
+@use '../../../style/mixin.scss' as *;
+@use '../../../style/variable.scss' as *;
+
+// Reset style
+
+.selectFrame {
+    padding: 0;
+    margin: 0;
+
+    span {
+        padding: 0;
+        margin: 0;
+    }
+    svg {
+        padding: 0;
+        margin: 0;
+    }
+}
+
+// Main style 
+
+.selectFrame {
+    display: inline-flex;
+    width: fit-content;
+    height: fit-content;
+    flex-direction: row;
+    padding: $Padding-9px $Padding-15px;
+    gap: $Padding-15px;
+    background-color: $Dominant-BG;
+    border-bottom: 1px solid $Secondary-Placeholder;
+
+    span {
+        min-width: 9.67vw;
+        color: $Secondary-Main;
+        user-select: none;
+
+        @include Body;
+    }
+    svg {
+        color: $Secondary-Main;
+        opacity: 0;
+    }
+}
+
+// States
+
+.selectFrame {
+    // Hover
+    &:hover {
+        background-color: $Dominant-Surface-06;
+    } 
+
+    // Select
+    &:has(.selected) {
+        background-color: $Dominant-Surface-08;
+
+        span {
+            color: $Accent-Blue;
+        }
+    }
+
+    // Multy select
+
+}

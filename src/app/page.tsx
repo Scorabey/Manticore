@@ -9,20 +9,23 @@ import { Textarea, TextareaSkeleton } from "@/component/inputs/textarea";
 import { CheckBox } from "@/component/checkboxes/checkbox";
 import { useState } from "react";
 import { Switcher } from "@/component/checkboxes/switcher/switcher";
-import { Control } from "@/component/dropdown/control/control";
+import { Control } from "@/component/dropdown/control";
+import { Options } from "@/component/dropdown/options";
+import { OptionValue } from "@/lib/types";
+import { Dropdown } from "@/component/dropdown/dropdown";
 
 export default function Home() {
-  const [isOpen, setIsOpen] = useState(false)
+
+  const option = [
+    {label: 'Apple', value: 'apple'},
+    {label: 'Orange', value: 'orange'},
+    {label: 'Mango', value: 'Mango'}
+  ]
 
   return (
     <>
-    <Control 
-    content="Open menu"
-    label={'Label'}
-    Icon={ShareIcon}
-    isOpen={isOpen}
-    onToggle={setIsOpen}
-    />
+    <Dropdown 
+    option={option}/>
     </>
   );
 }

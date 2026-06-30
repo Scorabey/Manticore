@@ -6,6 +6,13 @@ export type ThemeColor = 'blue' | 'red' | 'dark'
 
 export type ButtonType = 'submit' | 'button' | 'reset'
 
+export type OptionValue = string | number
+
+export interface DropdownOption {
+    value: string | number
+    label: string
+}
+
 export interface InputProps
     extends React.InputHTMLAttributes<HTMLInputElement> {
     placeholder: string
@@ -49,3 +56,14 @@ export interface ControlProps
         isOpen: boolean
         onToggle: (isOpen: boolean) => void
     }
+
+export interface OptionsProps {
+    value: OptionValue
+    label: OptionValue
+    onSelect: (value: OptionValue) => void
+    isSelected: boolean
+}
+
+export interface DropdownProps {
+    option: DropdownOption[]
+}
