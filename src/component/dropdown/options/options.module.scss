@@ -36,7 +36,7 @@
     }
     svg {
         color: $Accent-Blue;
-        opacity: 1;
+        opacity: 0;
     }
 }
 
@@ -58,5 +58,9 @@
     }
 
     // Multy select
-
+    &.selected.multySekected {
+        svg {
+            opacity: 1;
+        }
+    }
 }

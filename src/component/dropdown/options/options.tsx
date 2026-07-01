@@ -13,9 +13,10 @@ export const Options = ({
         <div 
         className={`
             ${style.selectFrame}
-            ${isSelected ? style.selected : ''}`}
+            ${isSelected ? style.selected : ''}
+            ${multy ? style.multySekected : ''}`}
         data-value={value}
-        onMouseDown={() => onSelect(value)}>
+        onPointerDown={() => onSelect(value)}>
             {children}
             {multy ? <Check width={20} height={20}/> : null}
         </div>

@@ -9,17 +9,12 @@ export const Control = ({
     disabled,
     isOpen,
     onToggle,
-    id,
     className,
     isValueState,
     ...rest }: ControlProps) => {
 
     const handleClick = () => {
         onToggle(!isOpen)
-    }
-
-    const handleBlur = () => {
-        onToggle(false)
     }
 
     return (
@@ -29,14 +24,12 @@ export const Control = ({
             <span className={style.label}>{label}</span>
             <button 
             {...rest}
-            id={id}
             className={`
                 ${style.button}
                 ${isValueState ? style.value : ''}
                 ${className}`}
             disabled={disabled}
             onClick={handleClick}
-            onBlur={handleBlur}
             >
                 {Icon ? <Icon width={20} height={20}/> : null}
                 <span className={style.content}>{content}</span>

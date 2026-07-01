@@ -1,4 +1,4 @@
-import React from "react"
+import React, { RefObject } from "react"
 
 export type State = 'success' | 'error' | null
 
@@ -7,6 +7,8 @@ export type ThemeColor = 'blue' | 'red' | 'dark'
 export type ButtonType = 'submit' | 'button' | 'reset'
 
 export type OptionValue = string | number
+
+export type DropdownListType = string | number | null | (string | number)[]
 
 export interface DropdownOption {
     value: string | number
@@ -67,6 +69,7 @@ export interface OptionsProps {
 }
 
 export interface DropdownProps {
+    setContent: string
     option: DropdownOption[]
     label?: string
     multy: true | false

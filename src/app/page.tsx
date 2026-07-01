@@ -25,8 +25,9 @@ export default function Home() {
   return (
     <>
     <Dropdown 
+    setContent="Select fruit"
     option={option}
-    label="Label"
+    label="Dropdown"
     multy={true}/>
     </>
   );
