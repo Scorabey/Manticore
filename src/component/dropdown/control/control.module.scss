@@ -1,5 +1,6 @@
 @use '../../../style/variable.scss' as *;
 @use '../../../style/mixin.scss' as *;
+@use '../../../style/skeleton.scss';
 
 // Reset style
 
@@ -15,7 +16,7 @@
 // Main style
 
 .buttonFrame {
-    display: flex;
+    display: inline-flex;
     flex-direction: column;
     gap: $Padding-8px;
     margin: 0;
@@ -24,7 +25,7 @@
     .button {
         display: flex;
         flex-direction: row;
-        min-width: 12.98vw;
+        width: 15.56vw;
         gap: $Padding-8px;
         padding: $Padding-8px $Padding-15px;
         background: $Dark-Gradient;
@@ -33,10 +34,14 @@
         cursor: pointer;
     }
     .content {
-        display: flex;
+        display: block;
         align-items: start;
         color: $Secondary-Placeholder;
         width: 100%;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        text-align: left;
 
         @include Body;
     }
@@ -54,7 +59,7 @@
 
 .buttonFrame {
     // Hover 
-    .button:not(:focus):not(:disabled):not(.value):hover {
+    .button:not(:focus):not(:disabled):not(.value):not(.buttonSkeleton):hover {
         background: $Dark-Gradient-Hover;
         border-color: $Secondary-Hover;
 
@@ -67,7 +72,7 @@
     }
 
     // Focused
-    .button:not(:disabled):focus {
+    .button:not(:disabled):not(.buttonSkeleton):focus {
         background: $Buttons-Dark;
         border-color: $Accent-Blue;
 
@@ -103,6 +108,24 @@
         span {
             color: $Secondary-Main;
         }
+        svg {
+            color: $Secondary-Main;
+        }
+    }
+}
+
+// Skeleton state
+
+.skeletonFrame {
+
+    .buttonSkeleton {
+        background: $Dominant-Surface-04;
+        border-color: $Dominant-Surface-04;
+        cursor: progress;
+        user-select: none;
+        align-items: center;
+        justify-content: center;
+
         svg {
             color: $Secondary-Main;
         }

@@ -1,6 +1,6 @@
 import style from './control.module.scss'
 import { ControlProps } from '@/lib/types'
-import { ChevronDown } from 'react-feather'
+import { ChevronDown, Loader } from 'react-feather'
 
 export const Control = ({ 
     content,
@@ -34,6 +34,16 @@ export const Control = ({
                 {Icon ? <Icon width={20} height={20}/> : null}
                 <span className={style.content}>{content}</span>
                 <ChevronDown width={18} height={18}/>
+            </button>
+        </div>
+    )
+}
+
+export const ControlSkeleton = () => {
+    return (
+        <div className={`${style.buttonFrame} ${style.skeletonFrame}`}>
+            <button className={`${style.button} ${style.buttonSkeleton}`}>
+                <Loader width={20} height={20}/>
             </button>
         </div>
     )

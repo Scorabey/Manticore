@@ -12,14 +12,16 @@ import { Switcher } from "@/component/checkboxes/switcher/switcher";
 import { Control } from "@/component/dropdown/control";
 import { Options } from "@/component/dropdown/options";
 import { OptionValue } from "@/lib/types";
-import { Dropdown } from "@/component/dropdown/dropdown";
+import { Dropdown, ControlSkeleton } from "@/component/dropdown";
 
 export default function Home() {
 
   const option = [
     {label: 'Apple', value: 'apple'},
     {label: 'Orange', value: 'orange'},
-    {label: 'Mango', value: 'Mango'}
+    {label: 'Mango', value: 'mango'},
+    {label: 'Banana', value: 'banana'},
+    {label: 'Watermelon', value: 'watermelon'},
   ]
 
   return (
@@ -28,7 +30,8 @@ export default function Home() {
     setContent="Select fruit"
     option={option}
     label="Dropdown"
-    multy={true}/>
+    multy={false}/>
+    <ControlSkeleton />
     </>
   );
 }

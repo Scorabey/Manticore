@@ -1,1 +1,1 @@
-export { Control } from './control'
+export { Control, ControlSkeleton } from './control'
