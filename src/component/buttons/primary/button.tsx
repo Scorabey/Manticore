@@ -1,21 +1,34 @@
+'use client'
+
 import type { ButtonProps } from "@/lib/types";
 import style from './button.module.scss';
 import { Loader } from 'react-feather';
+import { useRouter } from "next/navigation";
 
 export const PrimaryButton = ({ 
     content, 
     themeColor = 'dark',
     className,
+    link = null,
     ...rest 
     }: ButtonProps) => {
 
+    const router = useRouter()
+
+    const CheckLink = () => {
+        if(link) router.push(link)
+
+        return null
+    }
+
     return (
         <div 
-        className={style.buttonFrame}
+        className={[style.buttonFrame, className].filter(Boolean).join(" ")}
         data-overflow={themeColor}
         >
             <button 
-            className={[style.button, className].filter(Boolean).join(" ")}
+            className={style.button}
+            onClick={CheckLink}
             {...rest}
             >
                 {content}

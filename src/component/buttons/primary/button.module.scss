@@ -34,8 +34,7 @@
         flex-direction: row;
         align-items: center;
         justify-content: center;
-        min-width: 3.477vw;
-        min-height: 0.9em;
+        width: 100%;
         gap: $Padding-8px;
         @include Body;
     }

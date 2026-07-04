@@ -32,6 +32,7 @@ export interface ButtonProps
     themeColor?: ThemeColor
     Icon?: React.FunctionComponent<React.SVGProps<SVGSVGElement>>
     className?: string
+    link?: string | null
 }
 
 export interface BaseButtonProps
