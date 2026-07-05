@@ -3,14 +3,14 @@ import style from './button.module.scss'
 import { Loader } from 'react-feather';
 
 export const BaseButton = ({ 
-    content = null, 
+    children,
     Icon, 
     className,
     disabled = false,
     onClick,
     ...rest }: BaseButtonProps) => {
 
-    const IsFilledContent = content !== null;
+    const IsFilledContent = children !== null;
 
     return (
         <div 
@@ -28,7 +28,7 @@ export const BaseButton = ({
             {...rest}
             >
                 {Icon && <Icon width={20}/>}
-                {disabled ? 'Disabled' : content}
+                {disabled ? 'Disabled' : children}
             </button>
         </div>
     )

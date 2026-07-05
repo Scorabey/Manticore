@@ -17,7 +17,6 @@ export interface DropdownOption {
 
 export interface InputProps
     extends React.InputHTMLAttributes<HTMLInputElement> {
-    placeholder: string
     state?: State | null
     RightIcon?: React.FunctionComponent<React.SVGProps<SVGSVGElement>>
     LeftIcon?: React.FunctionComponent<React.SVGProps<SVGSVGElement>>
@@ -28,24 +27,22 @@ export interface InputProps
 
 export interface ButtonProps
     extends Omit<React.ButtonHTMLAttributes<HTMLButtonElement>, "children"> {
-    content: string
+    children: React.ReactNode
     themeColor?: ThemeColor
     Icon?: React.FunctionComponent<React.SVGProps<SVGSVGElement>>
-    className?: string
     link?: string | null
 }
 
 export interface BaseButtonProps
     extends Omit<React.ButtonHTMLAttributes<HTMLButtonElement>, "children" | "content"> {
-    content?: string | null 
+    children?: React.ReactNode | null 
     themeColor?: ThemeColor
     Icon: React.FunctionComponent<React.SVGProps<SVGSVGElement>>
-    className?: string
 }
 
 export interface CheckBoxProps
     extends Omit<React.InputHTMLAttributes<HTMLInputElement>, 'type'> {
-        content: string
+        children: React.ReactNode
         name: string
         type?: 'checkbox' | 'radio'
         indeterminate?: boolean
@@ -53,7 +50,7 @@ export interface CheckBoxProps
 
 export interface ControlProps
     extends Omit<React.ButtonHTMLAttributes<HTMLButtonElement>, 'onToggle'> {
-        content: string
+        children: React.ReactNode
         label?: string | null
         Icon?: React.FunctionComponent<React.SVGProps<SVGSVGElement>>
         isOpen: boolean

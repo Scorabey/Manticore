@@ -4,7 +4,7 @@ import { useId, useRef, useEffect } from 'react';
 import { Check } from 'react-feather';
 
 export const CheckBox = ({ 
-    content,
+    children,
     name,
     type = 'checkbox',
     disabled = false,
@@ -41,7 +41,7 @@ export const CheckBox = ({
             <span 
             className={style.content}
             >
-                {content}
+                {children}
             </span>
             {type === 'checkbox'
             ? <Check width={14} height={14} strokeWidth={3}/> 

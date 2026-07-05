@@ -3,7 +3,7 @@ import { ControlProps } from '@/lib/types'
 import { ChevronDown, Loader } from 'react-feather'
 
 export const Control = ({ 
-    content,
+    children,
     label,
     Icon,
     disabled,
@@ -32,7 +32,7 @@ export const Control = ({
             onClick={handleClick}
             >
                 {Icon ? <Icon width={20} height={20}/> : null}
-                <span className={style.content}>{content}</span>
+                <span className={style.content}>{children}</span>
                 <ChevronDown width={18} height={18}/>
             </button>
         </div>

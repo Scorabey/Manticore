@@ -81,7 +81,7 @@ export const Dropdown = ({
         ref={dropdownRef}
         className={style.dropdownFrame}>
             <Control 
-            content={getDisplayContent()}
+            children={getDisplayContent()}
             isOpen={isOpen}
             onToggle={setIsOpen}
             className={isOpen ? style.unRoundBorder : ''}

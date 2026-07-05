@@ -3,7 +3,7 @@ import style from './switcher.module.scss';
 import { CheckBoxProps } from '@/lib/types';
 
 export const Switcher = ({ 
-    content, 
+    children, 
     name,
     disabled = false,
     checked = false,
@@ -30,7 +30,7 @@ export const Switcher = ({
             <span 
             className={style.content}
             >
-                {content}
+                {children}
             </span>
         </label>
     )

@@ -6,7 +6,7 @@ import { Loader } from 'react-feather';
 import { useRouter } from "next/navigation";
 
 export const PrimaryButton = ({ 
-    content, 
+    children, 
     themeColor = 'dark',
     className,
     link = null,
@@ -31,7 +31,7 @@ export const PrimaryButton = ({
             onClick={CheckLink}
             {...rest}
             >
-                {content}
+                {children}
             </button>
         </div>
     )

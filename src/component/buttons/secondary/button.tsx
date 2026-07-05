@@ -3,7 +3,7 @@ import style from './button.module.scss';
 import { Loader } from 'react-feather';
 
 export const SecondaryButton = ({ 
-    content, 
+    children, 
     themeColor = 'dark', 
     Icon,
     className,
@@ -20,7 +20,7 @@ export const SecondaryButton = ({
             {...rest}
             >
                 {Icon && <Icon width={20}/>}
-                {content}
+                {children}
             </button>
         </div>
     )
