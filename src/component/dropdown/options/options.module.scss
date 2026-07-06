@@ -65,3 +65,23 @@
         }
     }
 }
+
+// Animation
+
+@keyframes FadeInUp {
+    0% {
+        opacity: 0;
+        transform: translateY(12px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0px);
+    }
+}
+
+.selectFrame {
+    animation-name: FadeInUp;
+    animation-fill-mode: both;
+    animation-timing-function: ease;
+    animation-duration: 400ms;
+}

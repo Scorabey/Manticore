@@ -1,4 +1,4 @@
-import style from './options.module.scss'
+import css from './options.module.scss'
 import { OptionsProps } from '@/lib/types'
 import { Check } from 'react-feather'
 
@@ -7,14 +7,16 @@ export const Options = ({
     value,
     onSelect,
     isSelected,
-    multy, }: OptionsProps) => {
+    multy,
+    style }: OptionsProps) => {
     
     return (
         <div 
         className={`
-            ${style.selectFrame}
-            ${isSelected ? style.selected : ''}
-            ${multy ? style.multySekected : ''}`}
+            ${css.selectFrame}
+            ${isSelected ? css.selected : ''}
+            ${multy ? css.multySekected : ''}`}
+        style={style}    
         data-value={value}
         onPointerDown={() => onSelect(value)}>
             {children}

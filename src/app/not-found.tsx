@@ -18,10 +18,11 @@ export default function NotFound() {
                 Ouch! This page not found!
             </h2>
             <PrimaryButton 
-            content="Back to Home page"
             themeColor="blue"
             className="article__button"
-            link={'/'}/>
+            link={'/'}>
+                Back to home page!
+            </PrimaryButton>
         </article>
         </div>
     )

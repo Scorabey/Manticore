@@ -1,3 +1,5 @@
+'use client'
+
 import { useRef, useState, useEffect } from 'react'
 import { Control } from './control'
 import style from './dropdown.module.scss'
@@ -91,13 +93,16 @@ export const Dropdown = ({
 
             {isOpen 
             ? <div className={style.dropdownList}>
-                {option.map((opt) => (
+                {option.map((opt, index) => (
                     <Options
                     key={opt.value}
                     value={opt.value}
                     onSelect={handleSelect}
                     isSelected={isOptionSelect(opt.value)}
-                    multy={multy}>
+                    multy={multy}
+                    style={{
+                        animationDelay: `${index * 100}ms`
+                    }}>
                         <span>{opt.label}</span>
                     </Options>
                 ))}

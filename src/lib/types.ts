@@ -1,4 +1,4 @@
-import React, { RefObject } from "react"
+import React, { CSSProperties, RefObject } from "react"
 
 export type State = 'success' | 'error' | null
 
@@ -64,11 +64,12 @@ export interface OptionsProps {
     onSelect: (value: OptionValue) => void
     isSelected: boolean
     multy: boolean
+    style: CSSProperties
 }
 
 export interface DropdownProps {
     setContent: string
     option: DropdownOption[]
     label?: string
-    multy: true | false
+    multy?: true | false
 }
