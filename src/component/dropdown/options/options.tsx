@@ -1,5 +1,5 @@
 import css from './options.module.scss'
-import { OptionsProps } from '@/lib/types'
+import { OptionsProps } from '@/lib/types/types'
 import { Check } from 'react-feather'
 
 export const Options = ({ 

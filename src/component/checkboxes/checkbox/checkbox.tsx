@@ -1,5 +1,5 @@
 import style from './checkbox.module.scss';
-import { CheckBoxProps } from '@/lib/types';
+import { CheckBoxProps } from '@/lib/types/types';
 import { useId, useRef, useEffect } from 'react';
 import { Check } from 'react-feather';
 

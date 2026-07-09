@@ -1,6 +1,6 @@
 'use client'
 
-import type { ButtonProps } from "@/lib/types";
+import type { ButtonProps } from "@/lib/types/types";
 import style from './button.module.scss';
 import { Loader } from 'react-feather';
 import { useRouter } from "next/navigation";

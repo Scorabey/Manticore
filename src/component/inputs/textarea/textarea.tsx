@@ -2,7 +2,7 @@
 
 import { useState, useId } from 'react'
 import style from './textarea.module.scss'
-import type { InputProps } from '@/lib/types'
+import type { InputProps } from '@/lib/types/types'
 
 export const Textarea = ({ 
     placeholder,
@@ -10,7 +10,8 @@ export const Textarea = ({
     state = null, 
     maxCharacters = 255,
     requiredField = false,
-    className
+    className,
+    name
     }: InputProps) => {
     const [value, setValue] = useState('')
 
@@ -35,6 +36,7 @@ export const Textarea = ({
         >
             <span className={`${style.label}`}>Textarea</span>
             <textarea
+            name={name}
             value={value}
             onChange={(event) => setValue(event.target.value)}
             id={id}

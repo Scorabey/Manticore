@@ -1,6 +1,6 @@
 import { useId } from 'react';
 import style from './switcher.module.scss';
-import { CheckBoxProps } from '@/lib/types';
+import { CheckBoxProps } from '@/lib/types/types';
 
 export const Switcher = ({ 
     children, 

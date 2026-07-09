@@ -1,4 +1,4 @@
-import type { ButtonProps } from "@/lib/types";
+import type { ButtonProps } from "@/lib/types/types";
 import style from './button.module.scss';
 import { Loader } from 'react-feather';
 
@@ -7,6 +7,7 @@ export const SecondaryButton = ({
     themeColor = 'dark', 
     Icon,
     className,
+    type,
     ...rest 
     }: ButtonProps) => {
 
@@ -15,7 +16,8 @@ export const SecondaryButton = ({
         className={style.buttonFrame}
         data-overflow={themeColor}
         >
-            <button 
+            <button
+            type={type}
             className={[style.button, className].filter(Boolean).join(" ")}
             {...rest}
             >

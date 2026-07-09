@@ -1,7 +1,7 @@
 'use client'
 
 import style from './input.module.scss';
-import type { InputProps } from '@/lib/types';
+import type { InputProps } from '@/lib/types/types';
 import { useState, useId } from 'react';
 import { ExclamationCircleIcon, CheckCircleIcon, XCircleIcon } from '@heroicons/react/20/solid';
 
@@ -14,7 +14,8 @@ export const Input = ({
     requiredField = false,
     disabled = false,
     type = 'text',
-    className, }: InputProps) => {
+    className,
+    name }: InputProps) => {
 
     const id = useId()
 
@@ -35,6 +36,7 @@ export const Input = ({
                 <div className={style.inputWrapper}>
                     {LeftIcon && <LeftIcon className={`${style.iconLeft} ${style.icon}`} width={20}/>}
                     <input
+                    name={name}
                     value={value}
                     onChange={(event) => setValue(event.target.value)}
                     type={type}

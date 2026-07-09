@@ -1,3 +1,4 @@
+import { RowDataPacket } from "mysql2"
 import React, { CSSProperties, RefObject } from "react"
 
 export type State = 'success' | 'error' | null
@@ -73,3 +74,13 @@ export interface DropdownProps {
     label?: string
     multy?: true | false
 }
+
+export interface User extends RowDataPacket {
+    id: number
+    login: string
+    password: string
+    email: string
+    age: number | null
+}
+
+export type PublicUser = Omit<User, "password">

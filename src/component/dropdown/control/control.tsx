@@ -1,5 +1,5 @@
 import style from './control.module.scss'
-import { ControlProps } from '@/lib/types'
+import { ControlProps } from '@/lib/types/types'
 import { ChevronDown, Loader } from 'react-feather'
 
 export const Control = ({ 

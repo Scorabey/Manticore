@@ -1,4 +1,4 @@
-import { BaseButtonProps } from '@/lib/types'
+import { BaseButtonProps } from '@/lib/types/types'
 import style from './button.module.scss'
 import { Loader } from 'react-feather';
 

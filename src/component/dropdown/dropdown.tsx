@@ -3,7 +3,7 @@
 import { useRef, useState, useEffect } from 'react'
 import { Control } from './control'
 import style from './dropdown.module.scss'
-import { DropdownListType, DropdownProps } from '@/lib/types'
+import { DropdownListType, DropdownProps } from '@/lib/types/types'
 import { Options } from './options'
 
 export const Dropdown = ({
