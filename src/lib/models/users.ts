@@ -1,9 +1,13 @@
+import { cacheLife, cacheTag, updateTag } from "next/cache"
 import { db } from "../db/db"
-import { User, PublicUser } from "../types/types"
+import { PublicUser, CreateUser, UpdateUser } from "../types/types"
 import { ResultSetHeader, RowDataPacket } from "mysql2"
 
 export class Users {
     async getAll() {
+        "use cache"
+        cacheLife("minutes")
+        cacheTag("users")
         const [users] = await db.query<(PublicUser & RowDataPacket)[]>(
             "SELECT id, login, email, age FROM users"
         )
@@ -11,6 +15,9 @@ export class Users {
         return users
     }
     async getById(id: number) {
+        "use cache"
+        cacheLife("minutes")
+        cacheTag(`user-${id}`)
         const [users] = await db.query<(PublicUser & RowDataPacket)[]>(
             "SELECT id, login, email, age FROM users WHERE id = ?",
             [id]
@@ -19,24 +26,20 @@ export class Users {
         return users[0] ?? null
     }
     async add(
-        login: string,
-        email: string,
-        age: number,
-        password: string
+        data: CreateUser
     ) {
         const [result] = await db.execute<ResultSetHeader>(
             "INSERT INTO users(login, password, email, age) VALUES(?, ?, ?, ?)",
-            [login, password, email, age]
+            [data.login, data.password, data.email, data.age]
         )
+
+        updateTag("users")
 
         return result.insertId
     }
     async update(
-        login: string,
-        email: string,
-        age: number,
-        password: string,
-        id: number
+        id: number,
+        data: UpdateUser
     ) {
         const [result] = await db.execute<ResultSetHeader>(
             `
@@ -48,8 +51,13 @@ export class Users {
                 age = ?
             WHERE id = ?
             `,
-            [login, password, email, age, id]
+            [data.login, data.password, data.email, data.age, id]
         )
+
+        if(result.affectedRows > 0) {
+            updateTag("users")
+            updateTag(`user-${id}`)
+        }
 
         return result.affectedRows > 0;
     }
@@ -58,6 +66,11 @@ export class Users {
             "DELETE FROM users WHERE id = ?",
             [id]
         )
+
+        if(result.affectedRows > 0) {
+            updateTag("users")
+            updateTag(`user-${id}`)
+        }
 
         return result.affectedRows > 0;
     }

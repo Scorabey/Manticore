@@ -84,3 +84,7 @@ export interface User extends RowDataPacket {
 }
 
 export type PublicUser = Omit<User, "password">
+
+export type UpdateUser = Omit<User, 'id'>
+
+export type CreateUser = UpdateUser
