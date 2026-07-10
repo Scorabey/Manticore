@@ -2,6 +2,7 @@ import { cacheLife, cacheTag, updateTag } from "next/cache"
 import { db } from "../db/db"
 import { PublicUser, CreateUser, UpdateUser } from "../types/types"
 import { ResultSetHeader, RowDataPacket } from "mysql2"
+import { hashPassword } from "../db/password"
 
 export class Users {
     async getAll() {
@@ -28,9 +29,11 @@ export class Users {
     async add(
         data: CreateUser
     ) {
+        const hashedPassword = await hashPassword(data.password)
+
         const [result] = await db.execute<ResultSetHeader>(
             "INSERT INTO users(login, password, email, age) VALUES(?, ?, ?, ?)",
-            [data.login, data.password, data.email, data.age]
+            [data.login, hashedPassword, data.email, data.age]
         )
 
         updateTag("users")
