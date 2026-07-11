@@ -1,5 +1,5 @@
 import { RowDataPacket } from "mysql2"
-import React, { CSSProperties, RefObject } from "react"
+import React, { CSSProperties } from "react"
 
 export type State = 'success' | 'error' | null
 
@@ -48,6 +48,11 @@ export interface CheckBoxProps
         type?: 'checkbox' | 'radio'
         indeterminate?: boolean
 }
+
+export interface CheckButtonProps
+    extends Omit<React.InputHTMLAttributes<HTMLInputElement>, 'type'> {
+        Icon: React.FunctionComponent<React.SVGProps<SVGSVGElement>>
+    }
 
 export interface ControlProps
     extends Omit<React.ButtonHTMLAttributes<HTMLButtonElement>, 'onToggle'> {

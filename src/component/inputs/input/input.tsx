@@ -15,7 +15,8 @@ export const Input = ({
     disabled = false,
     type = 'text',
     className,
-    name }: InputProps) => {
+    name,
+    onChange, }: InputProps) => {
 
     const id = useId()
 
@@ -38,7 +39,7 @@ export const Input = ({
                     <input
                     name={name}
                     value={value}
-                    onChange={(event) => setValue(event.target.value)}
+                    onChange={onChange}
                     type={type}
                     id={id}
                     placeholder={disabled ? 'Disabled' : placeholder}
@@ -54,7 +55,7 @@ export const Input = ({
             </label>
             {requiredField && <span 
             className={`
-                ${style.requiredField} 
+                ${style.requiredField}
                 ${state && style[state]}`}>
                     {state === null ? <ExclamationCircleIcon width={20}/> : null}
                     {state === 'success' ? <CheckCircleIcon width={20}/> : null}
