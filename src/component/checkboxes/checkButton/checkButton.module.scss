@@ -41,7 +41,7 @@
         cursor: pointer;
         width: 100%;
         height: 100%;
-        background-color: $Dominant-BG;
+        background-color: transparent;
         border-radius: 100%;
         transition: all ease 0.2s;
     }
@@ -59,7 +59,7 @@
 .checkboxFrame {
     &:hover {
         .checkbox {
-            background-color: $Dominant-Surface-04;
+            background-color: $Dominant-Surface-06;
         }
         svg {
             color: $Secondary-Hover;
@@ -67,7 +67,7 @@
     }
     &:has(.checkbox:active) {
         .checkbox {
-            background-color: $Dominant-Surface-06;
+            background-color: $Dominant-Surface-08;
         }
         svg {
             color: $Secondary-Main;

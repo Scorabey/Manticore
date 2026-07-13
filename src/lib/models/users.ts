@@ -4,77 +4,72 @@ import { PublicUser, CreateUser, UpdateUser } from "../types/types"
 import { ResultSetHeader, RowDataPacket } from "mysql2"
 import { hashPassword } from "../db/password"
 
-export class Users {
-    async getAll() {
-        "use cache"
-        cacheLife("minutes")
-        cacheTag("users")
-        const [users] = await db.query<(PublicUser & RowDataPacket)[]>(
-            "SELECT id, login, email, age FROM users"
-        )
+export async function getAllUsers() {
+    "use cache"
+    cacheLife("minutes")
+    cacheTag("users")
+    const [users] = await db.query<(PublicUser & RowDataPacket)[]>(
+        "SELECT id, login, email, age FROM users"
+    )
 
-        return users
-    }
-    async getById(id: number) {
-        "use cache"
-        cacheLife("minutes")
-        cacheTag(`user-${id}`)
-        const [users] = await db.query<(PublicUser & RowDataPacket)[]>(
-            "SELECT id, login, email, age FROM users WHERE id = ?",
-            [id]
-        )
+    return users
+}
+export async function getUserById(id: number) {
+    "use cache"
+    cacheLife("minutes")
+    cacheTag(`user-${id}`)
+    const [users] = await db.query<(PublicUser & RowDataPacket)[]>(
+        "SELECT id, login, email, age FROM users WHERE id = ?",
+        [id]
+    )
 
-        return users[0] ?? null
-    }
-    async add(
-        data: CreateUser
-    ) {
-        const hashedPassword = await hashPassword(data.password)
+    return users[0] ?? null
+}
+export async function addNewUser(data: CreateUser) {
+    const hashedPassword = await hashPassword(data.password)
 
-        const [result] = await db.execute<ResultSetHeader>(
-            "INSERT INTO users(login, password, email, age) VALUES(?, ?, ?, ?)",
-            [data.login, hashedPassword, data.email, data.age]
-        )
+    const [result] = await db.execute<ResultSetHeader>(
+        "INSERT INTO users(login, password, email) VALUES(?, ?, ?)",
+        [data.login, hashedPassword, data.email]
+    )
 
-        updateTag("users")
+    updateTag("users")
 
-        return result.insertId
-    }
-    async update(
+    return result.insertId 
+}
+export async function updateUser(
         id: number,
         data: UpdateUser
     ) {
-        const [result] = await db.execute<ResultSetHeader>(
-            `
-            UPDATE users 
-            SET 
-                login = ?,
-                password = ?,
-                email = ?,
-                age = ?
-            WHERE id = ?
-            `,
-            [data.login, data.password, data.email, data.age, id]
-        )
+    const [result] = await db.execute<ResultSetHeader>(
+        `
+        UPDATE users 
+        SET 
+            login = ?,
+            password = ?,
+            email = ?
+        WHERE id = ?
+        `,
+        [data.login, data.password, data.email, id]
+    )
 
-        if(result.affectedRows > 0) {
-            updateTag("users")
-            updateTag(`user-${id}`)
-        }
-
-        return result.affectedRows > 0;
+    if(result.affectedRows > 0) {
+        updateTag("users")
+        updateTag(`user-${id}`)
     }
-    async delete(id: number) {
-        const [result] = await db.execute<ResultSetHeader>(
-            "DELETE FROM users WHERE id = ?",
-            [id]
-        )
 
-        if(result.affectedRows > 0) {
-            updateTag("users")
-            updateTag(`user-${id}`)
-        }
+    return result.affectedRows > 0;
+}
+export async function deleteUser(id: number) {
+    const [result] = await db.execute<ResultSetHeader>(
+        "DELETE FROM users WHERE id = ?",
+        [id]
+    )
 
-        return result.affectedRows > 0;
+    if(result.affectedRows > 0) {
+        updateTag("users")
+        updateTag(`user-${id}`)
     }
+
+    return result.affectedRows > 0;
 }

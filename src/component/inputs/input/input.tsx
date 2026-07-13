@@ -16,13 +16,10 @@ export const Input = ({
     type = 'text',
     className,
     name,
+    value,
     onChange, }: InputProps) => {
 
     const id = useId()
-
-    const [value, setValue] = useState('')
-
-    const isFilled = value.length > 0
 
     return (
         <div className={`${style.frame}`}>
@@ -31,6 +28,7 @@ export const Input = ({
             className={`
                 ${style.inputFrame}
                 ${state && style[state]}
+                ${className ?? ''}
                 `}
             htmlFor={id}
             >
@@ -44,9 +42,7 @@ export const Input = ({
                     id={id}
                     placeholder={disabled ? 'Disabled' : placeholder}
                     className={`
-                        ${style.input} 
-                        ${className ?? ''}
-                        ${isFilled ? style.filled : ''}
+                        ${style.input}
                         `}
                     disabled={disabled}
                     />

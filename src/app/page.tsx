@@ -1,12 +1,14 @@
-import { CheckButton } from "@/component/checkboxes/checkButton";
-import { EyeIcon } from "@heroicons/react/24/outline";
+import { PrimaryButton } from "@/component/buttons/primary/button";
 
 export default function Home() {
 
   return (
     <>
-    <CheckButton 
-    Icon={EyeIcon}/>
+    <PrimaryButton
+    link={'/authorization'}
+    themeColor="blue">
+      Sign In
+    </PrimaryButton>
     </>
   );
 }

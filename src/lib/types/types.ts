@@ -17,13 +17,15 @@ export interface DropdownOption {
 }
 
 export interface InputProps
-    extends React.InputHTMLAttributes<HTMLInputElement> {
+    extends Omit<React.InputHTMLAttributes<HTMLInputElement>, 'value'> {
     state?: State | null
     RightIcon?: React.FunctionComponent<React.SVGProps<SVGSVGElement>>
     LeftIcon?: React.FunctionComponent<React.SVGProps<SVGSVGElement>>
     maxCharacters?: number
     requiredField?: boolean
     label?: string
+    type?: 'text' | 'email' | 'password'
+    value?: string
 }
 
 export interface ButtonProps
@@ -85,7 +87,6 @@ export interface User extends RowDataPacket {
     login: string
     password: string
     email: string
-    age: number | null
 }
 
 export type PublicUser = Omit<User, "password">

@@ -23,7 +23,6 @@
     gap: $Padding-9px;
     margin: 0;
     padding: 0;
-    width: fit-content;
 
     .inputFrame {
         display: block;
@@ -116,7 +115,7 @@
     }
 
     // Value state
-    &:has(.input.filled):not(.error):not(.success) {
+    &:has(.input:not(:placeholder-shown)):not(.error):not(.success) {
         @include Input-State-Value;
 
         svg {
