@@ -22,7 +22,7 @@ export interface InputProps
     RightIcon?: React.FunctionComponent<React.SVGProps<SVGSVGElement>>
     LeftIcon?: React.FunctionComponent<React.SVGProps<SVGSVGElement>>
     maxCharacters?: number
-    requiredField?: boolean
+    info?: string | null
     label?: string
     type?: 'text' | 'email' | 'password'
     value?: string

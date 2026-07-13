@@ -5,11 +5,15 @@ import { Input, InputSkeleton } from "@/component/inputs/input"
 import { KeyIcon } from "@heroicons/react/24/outline"
 import style from './style.module.scss'
 import { UserAuth } from "./userAuth"
-import { useActionState } from "react"
+import { useActionState, useState } from "react"
+import { State } from "@/lib/types/types"
 
 export default function AuthPage() {
 
     const [state, formAction] = useActionState(UserAuth, null)
+
+    const [emailError, setEmailError] = useState('')
+    const [emailState, setEmailState] = useState<State | null>(null)
 
     return (
         <article
@@ -31,7 +35,19 @@ export default function AuthPage() {
                 placeholder="Enter Email"
                 label="Email"
                 name="email"
-                type="email"/>
+                type="email"
+                state={emailState}
+                info={emailError}
+                required
+                onChange={(event) => {
+                    if(event.target.validity.valid) {
+                        setEmailState("success")
+                        setEmailError("Верный формат!")
+                    } else {
+                        setEmailState("error")
+                        setEmailError("Неправильный формат!")
+                    }
+                }}/>
                 <Input
                 className={style.formInput}
                 placeholder="Enter Password"

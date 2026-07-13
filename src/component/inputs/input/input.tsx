@@ -11,13 +11,10 @@ export const Input = ({
     LeftIcon,
     label,
     state = null,
-    requiredField = false,
     disabled = false,
-    type = 'text',
+    info = null,
     className,
-    name,
-    value,
-    onChange, }: InputProps) => {
+    ...props }: InputProps) => {
 
     const id = useId()
 
@@ -35,10 +32,7 @@ export const Input = ({
                 <div className={style.inputWrapper}>
                     {LeftIcon && <LeftIcon className={`${style.iconLeft} ${style.icon}`} width={20}/>}
                     <input
-                    name={name}
-                    value={value}
-                    onChange={onChange}
-                    type={type}
+                    {...props}
                     id={id}
                     placeholder={disabled ? 'Disabled' : placeholder}
                     className={`
@@ -49,14 +43,14 @@ export const Input = ({
                     {RightIcon && !LeftIcon ? <RightIcon className={`${style.iconRight} ${style.icon}`} width={20}/> : null}
                 </div>
             </label>
-            {requiredField && <span 
+            {info && <span 
             className={`
                 ${style.requiredField}
                 ${state && style[state]}`}>
                     {state === null ? <ExclamationCircleIcon width={20}/> : null}
                     {state === 'success' ? <CheckCircleIcon width={20}/> : null}
                     {state === 'error' ? <XCircleIcon width={20}/> : null}
-                    This is required field
+                    {info}
                     </span>}
         </div>
     )
