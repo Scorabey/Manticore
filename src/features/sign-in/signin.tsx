@@ -2,7 +2,7 @@
 
 import style from './signin.module.scss'
 
-export const SignUp = () => {
+export const SignIn = () => {
 
     return (
         <div className={style.signInWrapper}>

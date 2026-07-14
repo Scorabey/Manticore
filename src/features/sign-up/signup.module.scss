@@ -1,2 +1,24 @@
 @use '../../shared/style/mixin.scss' as *;
 @use '../../shared/style/variable.scss' as *;
+
+// Reset style
+.form {
+    box-sizing: border-box;
+    appearance: none;
+    padding: 0;
+    margin: 0;
+}
+
+// Main style
+.form {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    gap: 0.6vw;
+
+    .error {
+        @include Body;
+        color: $Accent-Red;
+    }
+}
