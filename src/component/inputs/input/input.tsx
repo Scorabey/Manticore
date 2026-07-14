@@ -35,9 +35,7 @@ export const Input = ({
                     {...props}
                     id={id}
                     placeholder={disabled ? 'Disabled' : placeholder}
-                    className={`
-                        ${style.input}
-                        `}
+                    className={`${style.input}`}
                     disabled={disabled}
                     />
                     {RightIcon && !LeftIcon ? <RightIcon className={`${style.iconRight} ${style.icon}`} width={20}/> : null}

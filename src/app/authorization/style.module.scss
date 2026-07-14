@@ -24,26 +24,32 @@
 
 // Main style
 
-.article {
-    display: inline-flex;
-    flex-direction: column;
+.page {
+    display: flex;
     justify-content: center;
     align-items: center;
-    padding: 3.13vh 2.23vw;
-    gap: 1.1vw;
-    border-radius: 12px;
-    background-color: $Dominant-Surface-02;
-    .title {}
-    .form {
-        display: flex;
-        flex-direction: column;
-        width: 100%;
-        height: 100%;
-        gap: 0.6vw;
+    height: 100%;
 
-        .error {
-            @include Body;
-            color: $Accent-Red;
+    .article {
+        display: inline-flex;
+        flex-direction: column;
+        place-content: center;
+        padding: 3.13vh 2.23vw;
+        gap: 1.1vw;
+        border-radius: 12px;
+        background-color: $Dominant-Surface-02;
+        .title {}
+        .form {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            height: 100%;
+            gap: 0.6vw;
+
+            .error {
+                @include Body;
+                color: $Accent-Red;
+            }
         }
     }
 }
