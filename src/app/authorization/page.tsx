@@ -1,12 +1,12 @@
 'use client'
 
-import { PrimaryButton, PrimaryButtonSkeleton } from "@/component/buttons/primary/button"
-import { Input, InputSkeleton } from "@/component/inputs/input"
+import { PrimaryButton } from "@/shared/ui/buttons/primary/button"
+import { Input } from "@/shared/ui/inputs/input"
 import { KeyIcon } from "@heroicons/react/24/outline"
 import style from './style.module.scss'
-import { UserAuth } from "./userAuth"
-import { useActionState, useEffect, useRef, useState } from "react"
-import { State } from "@/lib/types/types"
+import { UserAuth } from "@/entities/user/userAuth"
+import { useActionState, useEffect, useState } from "react"
+import { State } from "@/shared/lib/types/types"
 
 export default function AuthPage() {
 

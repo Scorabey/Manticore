@@ -1,4 +1,4 @@
-import { PrimaryButton } from "@/component/buttons/primary/button";
+import { PrimaryButton } from "@/shared/ui/buttons/primary/button";
 
 export default function Home() {
 
