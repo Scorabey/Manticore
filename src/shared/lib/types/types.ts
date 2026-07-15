@@ -11,6 +11,14 @@ export type OptionValue = string | number
 
 export type DropdownListType = string | number | null | (string | number)[]
 
+export type PublicUser = Omit<User, "password">
+
+export type UpdateUser = Omit<User, 'id'>
+
+export type CreateUser = UpdateUser
+
+type FieldName = 'login' | 'email' | 'password' | 'confirm'
+
 export interface DropdownOption {
     value: string | number
     label: string
@@ -90,8 +98,9 @@ export interface User extends RowDataPacket {
     email: string
 }
 
-export type PublicUser = Omit<User, "password">
+export interface ErrorFields {
+    message: string | null
+    state: State | null
+}
 
-export type UpdateUser = Omit<User, 'id'>
-
-export type CreateUser = UpdateUser
+export type UserErrorFields = Partial<Record<FieldName, ErrorFields>>

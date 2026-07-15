@@ -3,7 +3,7 @@
 import style from './signup.module.scss'
 import { useState, useActionState, useEffect, useRef } from 'react'
 import { UserAuth } from '@/entities/user/userAuth'
-import { State } from '@/shared/lib/types/types'
+import { UserErrorFields } from '@/shared/lib/types/types'
 import { Input } from '@/shared/ui/inputs/input'
 import { KeyIcon } from '@heroicons/react/24/outline'
 import { PrimaryButton } from '@/shared/ui/buttons/primary/button'
@@ -14,31 +14,53 @@ export const SignUp = () => {
 
     const [state, formAction] = useActionState(UserAuth, null)
 
-    const [emailError, setEmailError] = useState('')
-    const [emailState, setEmailState] = useState<State | null>(null)
-
-    const [loginError, setLoginError] = useState('')
-    const [loginState, setLoginState] = useState<State | null>(null)
-
-    const [passError, setPassError] = useState('')
-    const [passState, setPassState] = useState<State | null>(null)
-
-    const [confirmError, setConfirmError] = useState('')
-    const [confirmState, setConfirmState] = useState<State | null>(null)
+    const [fields, setFields] = useState<UserErrorFields>({
+        login: {
+            message: null,
+            state: null
+        },
+        email: {
+            message: null,
+            state: null
+        },
+        password: {
+            message: null,
+            state: null
+        },
+        confirm: {
+            message: null,
+            state: null
+        }
+    })
 
     useEffect(() => {
         if(state?.success !== false) return
         if(state?.errors?.confirm) {
-            setConfirmState('error')
-            setConfirmError(state?.errors?.confirm)
+            setFields(prev => ({
+                ...prev,
+                confirm: {
+                    message: state.errors?.confirm ?? null,
+                    state: "error"
+                }
+            }))
         }
         if(state.errors?.email) {
-            setEmailState('error')
-            setEmailError(state.errors.email)
+            setFields(prev => ({
+                ...prev,
+                email: {
+                    message: state.errors?.confirm ?? null,
+                    state: "error"
+                }
+            }))
         }
         if(state.errors?.login) {
-            setLoginState('error')
-            setLoginError(state.errors.login)
+            setFields(prev => ({
+                ...prev,
+                login: {
+                    message: state.errors?.confirm ?? null,
+                    state: "error"
+                }
+            }))
         }
     }, [state])
 
@@ -55,25 +77,55 @@ export const SignUp = () => {
 
         if(column === 'login') {
             if(objectLength <= minLength) {
-                setLoginError(`Должно быть больше ${minLength} символов!`)
-                setLoginState("error")
+                setFields(prev => ({
+                    ...prev,
+                    login: {
+                        message: `Должно быть больше ${minLength} символов!`,
+                        state: "error"
+                    }
+                }))
             } else if(objectLength >= maxLength) {
-                setLoginError(`Должно быть меньше ${maxLength} символов!`)
-                setLoginState("error")
+                setFields(prev => ({
+                    ...prev,
+                    login: {
+                        message: `Должно быть меньше ${maxLength} символов!`,
+                        state: "error"
+                    }
+                }))
             } else {
-                setLoginError("")
-                setLoginState(null)
+                setFields(prev => ({
+                    ...prev,
+                    login: {
+                        message: null,
+                        state: null
+                    }
+                }))
             }
         } else {
             if(objectLength <= minLength) {
-                setPassError(`Должно быть больше ${minLength} символов!`)
-                setPassState("error")
+                setFields(prev => ({
+                    ...prev,
+                    password: {
+                        message: `Должно быть больше ${minLength} символов!`,
+                        state: "error"
+                    }
+                }))
             } else if(objectLength >= maxLength) {
-                setPassError(`Должно быть меньше ${maxLength} символов!`)
-                setPassState("error")
+                setFields(prev => ({
+                    ...prev,
+                    password: {
+                        message: `Должно быть меньше ${maxLength} символов!`,
+                        state: "error"
+                    }
+                }))
             } else {
-                setPassError("")
-                setPassState(null)
+                setFields(prev => ({
+                    ...prev,
+                    password: {
+                        message: null,
+                        state: null
+                    }
+                }))
             }
         }
     }
@@ -92,14 +144,19 @@ export const SignUp = () => {
                 label="Login"
                 name="login"
                 type="text"
-                state={loginState}
-                info={loginError}
+                state={fields.login?.state}
+                info={fields.login?.message}
                 onBlur={(event) => {
                     CheckLengthError(event.target.value.length, 3, 42, 'login')
                 }}
                 onChange={() => {
-                    setLoginError("")
-                    setLoginState(null)
+                    setFields(prev => ({
+                        ...prev,
+                        login: {
+                            message: null,
+                            state: null
+                        }
+                    }))
                 }}/>
                 <Input
                 required
@@ -108,17 +165,27 @@ export const SignUp = () => {
                 label="Email"
                 name="email"
                 type="email"
-                state={emailState}
-                info={emailError}
+                state={fields.email?.state}
+                info={fields.email?.message}
                 onInvalid={(event) => {
                     event.preventDefault()
 
-                    setEmailState("error")
-                    setEmailError("Некорректный формат!")
+                    setFields(prev => ({
+                        ...prev,
+                        email: {
+                            message: "Некоректный формат поля!",
+                            state: "error"
+                        }
+                    }))
                 }}
                 onChange={() => {
-                    setEmailError("")
-                    setEmailState(null)
+                    setFields(prev => ({
+                        ...prev,
+                        email: {
+                            message: null,
+                            state: null
+                        }
+                    }))
                 }}/>
                 <Input
                 required
@@ -128,14 +195,19 @@ export const SignUp = () => {
                 name="password"
                 type="password"
                 LeftIcon={KeyIcon}
-                state={passState}
-                info={passError}
+                state={fields.password?.state}
+                info={fields.password?.message}
                 onBlur={(event) => {
                     CheckLengthError(event.target.value.length, 8, 255, 'password')
                 }}
                 onChange={() => {
-                    setPassError("")
-                    setPassState(null)
+                    setFields(prev => ({
+                        ...prev,
+                        password: {
+                            message: null,
+                            state: null
+                        }
+                    }))
                 }}/>
                 <Input
                 required
@@ -144,12 +216,17 @@ export const SignUp = () => {
                 label="Confirm Password"
                 name="confirm"
                 type="password"
-                state={confirmState}
-                info={confirmError}
+                state={fields.confirm?.state}
+                info={fields.confirm?.message}
                 LeftIcon={KeyIcon}
                 onChange={() => {
-                    setConfirmError("")
-                    setConfirmState(null)
+                    setFields(prev => ({
+                        ...prev,
+                        confirm: {
+                            message: null,
+                            state: null
+                        }
+                    }))
                 }}/>
                 {state?.errors?.global && (
                     <p className={style.error}>{state.errors.global}</p>
