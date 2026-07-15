@@ -42,21 +42,30 @@ export async function UserAuth(
     } catch(error) {
         const validError = error as QueryError
 
-        switch (validError.code) {
-            case "ER_DUP_ENTRY":
+        if(validError.code === 'ER_DUP_ENTRY') {
+            if(validError.message.includes("uq_users_login")) {
                 return {
                     success: false,
                     errors: {
-                        email: "Адрес электроной почты уже занят!"
+                        login: "Это имя уже занято!"
                     }
                 }
-            default: 
+            }
+            if(validError.message.includes("uq_users_email")) {
                 return {
                     success: false,
                     errors: {
-                        global: "Ошибка создания пользователя!"
+                        email: "Адрес електроной почты уже занят!"
                     }
                 }
+            }
+        }
+
+        return {
+            success: false,
+            errors: {
+                global: "Ошибка базы данных!"
+            }
         }
     }
     redirect('/')

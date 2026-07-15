@@ -19,34 +19,32 @@ export const SignUp = () => {
 
     const [loginError, setLoginError] = useState('')
     const [loginState, setLoginState] = useState<State | null>(null)
-    const [loginLength, setLoginLength] = useState<number | null>(null)
 
     const [passError, setPassError] = useState('')
     const [passState, setPassState] = useState<State | null>(null)
-    const [passLength, setPassLength] = useState<number | null>(null)
 
     const [confirmError, setConfirmError] = useState('')
     const [confirmState, setConfirmState] = useState<State | null>(null)
 
     useEffect(() => {
-        if(state?.success === false && state?.errors?.confirm) {
+        if(state?.success !== false) return
+        if(state?.errors?.confirm) {
             setConfirmState('error')
             setConfirmError(state?.errors?.confirm)
         }
-        if(state?.success === false && state.errors?.email) {
+        if(state.errors?.email) {
             setEmailState('error')
             setEmailError(state.errors.email)
+        }
+        if(state.errors?.login) {
+            setLoginState('error')
+            setLoginError(state.errors.login)
         }
     }, [state])
 
     useEffect(() => {
         inputLoginRef.current?.focus()
     }, [])
-
-    const CheckLoginLength = (event: React.ChangeEvent<HTMLInputElement>) => {
-        const length = event.target.value.length
-        setLoginLength(length)
-    }
 
     const CheckLengthError = (
         objectLength: number | null,
@@ -87,6 +85,7 @@ export const SignUp = () => {
             action={formAction}
             className={style.form}>
                 <Input
+                required
                 ref={inputLoginRef}
                 className={style.formInput}
                 placeholder="Enter Login"
@@ -95,13 +94,15 @@ export const SignUp = () => {
                 type="text"
                 state={loginState}
                 info={loginError}
-                onChange={(event) => {
-                    CheckLoginLength(event)
+                onBlur={(event) => {
+                    CheckLengthError(event.target.value.length, 3, 42, 'login')
                 }}
-                onBlur={() => {
-                    CheckLengthError(loginLength, 3, 42, 'login')
+                onChange={() => {
+                    setLoginError("")
+                    setLoginState(null)
                 }}/>
                 <Input
+                required
                 className={style.formInput}
                 placeholder="Enter Email"
                 label="Email"
@@ -109,14 +110,18 @@ export const SignUp = () => {
                 type="email"
                 state={emailState}
                 info={emailError}
-                required
                 onInvalid={(event) => {
                     event.preventDefault()
 
                     setEmailState("error")
                     setEmailError("Некорректный формат!")
+                }}
+                onChange={() => {
+                    setEmailError("")
+                    setEmailState(null)
                 }}/>
                 <Input
+                required
                 className={style.formInput}
                 placeholder="Enter Password"
                 label="Password"
@@ -125,13 +130,15 @@ export const SignUp = () => {
                 LeftIcon={KeyIcon}
                 state={passState}
                 info={passError}
-                onChange={(event) => {
-                    setPassLength(event.target.value.length)
+                onBlur={(event) => {
+                    CheckLengthError(event.target.value.length, 8, 255, 'password')
                 }}
-                onBlur={() => {
-                    CheckLengthError(passLength, 8, 255, 'password')
+                onChange={() => {
+                    setPassError("")
+                    setPassState(null)
                 }}/>
                 <Input
+                required
                 className={style.formInput}
                 placeholder="Confirm Password"
                 label="Confirm Password"
@@ -139,7 +146,11 @@ export const SignUp = () => {
                 type="password"
                 state={confirmState}
                 info={confirmError}
-                LeftIcon={KeyIcon}/>
+                LeftIcon={KeyIcon}
+                onChange={() => {
+                    setConfirmError("")
+                    setConfirmState(null)
+                }}/>
                 {state?.errors?.global && (
                     <p className={style.error}>{state.errors.global}</p>
                 )}
