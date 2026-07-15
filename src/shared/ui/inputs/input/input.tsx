@@ -14,6 +14,7 @@ export const Input = ({
     disabled = false,
     info = null,
     className,
+    ref,
     ...props }: InputProps) => {
 
     const id = useId()
@@ -33,6 +34,7 @@ export const Input = ({
                     {LeftIcon && <LeftIcon className={`${style.iconLeft} ${style.icon}`} width={20}/>}
                     <input
                     {...props}
+                    ref={ref}
                     id={id}
                     placeholder={disabled ? 'Disabled' : placeholder}
                     className={`${style.input}`}

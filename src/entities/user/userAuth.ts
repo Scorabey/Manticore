@@ -17,12 +17,15 @@ type State = {
 export async function UserAuth(
     prevState: State| null, 
     formData: FormData): Promise<State> {
-    const login = formData.get('login') as string
-    const email = formData.get('email') as string
-    const password = formData.get('password') as string
-    const confirmPassword = formData.get('confirm') as string
 
-    if(password !== confirmPassword) {
+    const data = {
+        login: formData.get('login') as string,
+        email: formData.get('email') as string,
+        password: formData.get('password') as string,
+        confirmPassword: formData.get('confirm') as string
+    }
+
+    if(data.password !== data.confirmPassword) {
         return {
             success: false,
             errors: {
@@ -32,9 +35,9 @@ export async function UserAuth(
     }
     try {
         await addNewUser({ 
-            login: login, 
-            email: email, 
-            password: password 
+            login: data.login, 
+            email: data.email, 
+            password: data.password 
         })
     } catch(error) {
         const validError = error as QueryError

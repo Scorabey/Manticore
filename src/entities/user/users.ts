@@ -1,3 +1,5 @@
+'use server'
+
 import { cacheLife, cacheTag, updateTag } from "next/cache"
 import { db } from "@/shared/lib/db/db"
 import { PublicUser, CreateUser, UpdateUser } from "@/shared/lib/types/types"

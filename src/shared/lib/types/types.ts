@@ -26,6 +26,7 @@ export interface InputProps
     label?: string
     type?: 'text' | 'email' | 'password'
     value?: string
+    ref?: React.Ref<HTMLInputElement>
 }
 
 export interface ButtonProps

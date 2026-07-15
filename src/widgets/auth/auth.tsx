@@ -11,13 +11,6 @@ export const AuthWidget = () => {
                 Create An Account
             </h2>
             <SignUp />
-            <PrimaryButton
-            form='register-form'
-            className={style.createButton}
-            themeColor="blue"
-            type="submit">
-                Create an Account
-            </PrimaryButton>
         </article>
     )
 }
