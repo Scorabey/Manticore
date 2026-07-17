@@ -48,7 +48,7 @@ export const SignUp = () => {
             setFields(prev => ({
                 ...prev,
                 email: {
-                    message: state.errors?.confirm ?? null,
+                    message: state.errors?.email ?? null,
                     state: "error"
                 }
             }))
@@ -57,7 +57,7 @@ export const SignUp = () => {
             setFields(prev => ({
                 ...prev,
                 login: {
-                    message: state.errors?.confirm ?? null,
+                    message: state.errors?.login ?? null,
                     state: "error"
                 }
             }))

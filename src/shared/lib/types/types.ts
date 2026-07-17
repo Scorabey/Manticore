@@ -17,7 +17,7 @@ export type UpdateUser = Omit<User, 'id'>
 
 export type CreateUser = UpdateUser
 
-type FieldName = 'login' | 'email' | 'password' | 'confirm'
+type FieldName = 'login' | 'email' | 'password' | 'confirm' | 'server'
 
 export interface DropdownOption {
     value: string | number

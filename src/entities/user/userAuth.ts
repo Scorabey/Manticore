@@ -3,6 +3,7 @@
 import { addNewUser } from "@/entities/user/users"
 import { redirect } from "next/navigation"
 import { QueryError } from "mysql2"
+import { sessionBinding } from "../session/session"
 
 type State = {
     success: boolean
@@ -34,11 +35,12 @@ export async function UserAuth(
         }
     }
     try {
-        await addNewUser({ 
+        const userId = await addNewUser({ 
             login: data.login, 
             email: data.email, 
             password: data.password 
         })
+        await sessionBinding(userId)
     } catch(error) {
         const validError = error as QueryError
 
