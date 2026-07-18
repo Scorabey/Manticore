@@ -4,8 +4,8 @@ import crypto from "crypto"
 import { db } from "@/shared/lib/db/db"
 import { cookies } from "next/headers"
 import { ResultSetHeader } from "mysql2"
-
-const SESSION_DAYS = 30
+import { Session } from "@/shared/lib/types/types"
+import { SESSION_DAYS } from "./sessionBinding"
 
 export async function saveToken(
     userId: number,
@@ -20,6 +20,22 @@ export async function saveToken(
     if(result.affectedRows !== 1) {
         throw new Error("Failed to create session.")
     }
+}
+
+export async function getSession(token: string) {
+    const [rows] = await db.query<Session[]>(
+        `SELECT 
+            users.id, 
+            users.login, 
+            users.email
+        FROM sessions
+        JOIN users ON users.id = sessions.user_id
+        WHERE sessions.token = ?
+        LIMIT 1`,
+        [token]
+    )
+
+    return rows[0] ?? null
 }
 
 export async function sessionBinding(

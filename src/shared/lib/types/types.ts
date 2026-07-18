@@ -104,3 +104,10 @@ export interface ErrorFields {
 }
 
 export type UserErrorFields = Partial<Record<FieldName, ErrorFields>>
+
+export interface Session extends RowDataPacket {
+    id: number
+    user_id: number
+    token: string
+    expiresAt: Date
+}
