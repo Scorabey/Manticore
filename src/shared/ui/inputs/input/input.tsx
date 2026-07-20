@@ -15,9 +15,14 @@ export const Input = ({
     info = null,
     className,
     ref,
+    isLoading,
     ...props }: InputProps) => {
 
     const id = useId()
+
+    if (isLoading) {
+        return <InputSkeleton />
+    }
 
     return (
         <div className={`${style.frame}`}>

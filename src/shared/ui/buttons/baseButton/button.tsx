@@ -8,9 +8,14 @@ export const BaseButton = ({
     className,
     disabled = false,
     onClick,
+    isLoading,
     ...rest }: BaseButtonProps) => {
 
     const IsFilledContent = children !== null;
+
+    if (isLoading) {
+        return <BaseButtonSkeleton />
+    }
 
     return (
         <div 

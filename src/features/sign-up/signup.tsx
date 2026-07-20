@@ -12,7 +12,7 @@ export const SignUp = () => {
 
     const inputLoginRef = useRef<HTMLInputElement>(null)
 
-    const [state, formAction] = useActionState(UserAuth, null)
+    const [state, formAction, isPending] = useActionState(UserAuth, null)
 
     const [fields, setFields] = useState<UserErrorFields>({
         login: {
@@ -144,6 +144,7 @@ export const SignUp = () => {
                 label="Login"
                 name="login"
                 type="text"
+                isLoading={isPending}
                 state={fields.login?.state}
                 info={fields.login?.message}
                 onBlur={(event) => {
@@ -165,6 +166,7 @@ export const SignUp = () => {
                 label="Email"
                 name="email"
                 type="email"
+                isLoading={isPending}
                 state={fields.email?.state}
                 info={fields.email?.message}
                 onInvalid={(event) => {
@@ -195,6 +197,7 @@ export const SignUp = () => {
                 name="password"
                 type="password"
                 LeftIcon={KeyIcon}
+                isLoading={isPending}
                 state={fields.password?.state}
                 info={fields.password?.message}
                 onBlur={(event) => {
@@ -216,6 +219,7 @@ export const SignUp = () => {
                 label="Confirm Password"
                 name="confirm"
                 type="password"
+                isLoading={isPending}
                 state={fields.confirm?.state}
                 info={fields.confirm?.message}
                 LeftIcon={KeyIcon}
@@ -235,6 +239,7 @@ export const SignUp = () => {
             <PrimaryButton
             form='register-form'
             className={style.createButton}
+            isLoading={isPending}
             themeColor="blue"
             type="submit">
                 Create an Account

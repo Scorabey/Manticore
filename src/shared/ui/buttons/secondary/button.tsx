@@ -8,8 +8,13 @@ export const SecondaryButton = ({
     Icon,
     className,
     type,
+    isLoading,
     ...rest 
     }: ButtonProps) => {
+
+    if (isLoading) {
+        return <SecondaryButtonSkeleton themeColor={themeColor}/>
+    }
 
     return (
         <div 

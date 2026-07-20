@@ -35,6 +35,7 @@ export interface InputProps
     type?: 'text' | 'email' | 'password'
     value?: string
     ref?: React.Ref<HTMLInputElement>
+    isLoading?: boolean
 }
 
 export interface ButtonProps
@@ -43,6 +44,7 @@ export interface ButtonProps
     themeColor?: ThemeColor
     Icon?: React.FunctionComponent<React.SVGProps<SVGSVGElement>>
     link?: string | null
+    isLoading?: boolean
 }
 
 export interface BaseButtonProps
@@ -50,6 +52,7 @@ export interface BaseButtonProps
     children?: React.ReactNode | null 
     themeColor?: ThemeColor
     Icon: React.FunctionComponent<React.SVGProps<SVGSVGElement>>
+    isLoading?: boolean
 }
 
 export interface CheckBoxProps
@@ -107,7 +110,7 @@ export type UserErrorFields = Partial<Record<FieldName, ErrorFields>>
 
 export interface Session extends RowDataPacket {
     id: number
-    user_id: number
+    userId: number
     token: string
     expiresAt: Date
 }

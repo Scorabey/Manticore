@@ -11,7 +11,8 @@ export const Textarea = ({
     maxCharacters = 255,
     info = null,
     className,
-    name
+    name,
+    isLoading
     }: InputProps) => {
     const [value, setValue] = useState('')
 
@@ -22,6 +23,10 @@ export const Textarea = ({
     const showCharacterField = value.length - maxCharacters
 
     const manyCharacterError = value.length > maxCharacters
+
+    if (isLoading) {
+        return <TextareaSkeleton />
+    }
 
     return (
         <label 

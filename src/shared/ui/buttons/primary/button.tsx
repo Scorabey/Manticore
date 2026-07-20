@@ -10,6 +10,7 @@ export const PrimaryButton = ({
     themeColor = 'dark',
     className,
     link = null,
+    isLoading,
     ...rest 
     }: ButtonProps) => {
 
@@ -19,6 +20,10 @@ export const PrimaryButton = ({
         if(link) router.push(link)
 
         return null
+    }
+
+    if (isLoading) {
+        return <PrimaryButtonSkeleton themeColor={themeColor}/>
     }
 
     return (
