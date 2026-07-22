@@ -157,6 +157,7 @@ export const SignUp = () => {
                     <form 
                     action={formAction}
                     className={style.form}
+                    id='register-form'
                     >
                         <Input              // Login input
                         ref={inputLoginRef}

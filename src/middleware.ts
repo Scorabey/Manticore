@@ -1,14 +1,15 @@
 import { NextRequest, NextResponse } from "next/server";
 
-export async function middleware(request: NextRequest) {
-    const response = NextResponse.redirect(new URL('/authorization', request.url))
-    const token = request.cookies.get("session")?.value
+export function middleware(request: NextRequest) {
+    const token = request.cookies.get("session")?.value;
 
-    if(!token) return response
+    if (token) {
+        return NextResponse.redirect(new URL("/", request.url));
+    }
 
-    return NextResponse.next()
+    return NextResponse.next();
 }
 
 export const config = {
-    matcher: ['/profile/:path*', '/dashboard/:path*']
-}
+    matcher: ["/authorization/:path*"],
+};

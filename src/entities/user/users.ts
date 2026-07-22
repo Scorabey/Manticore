@@ -2,7 +2,7 @@
 
 import { cacheLife, cacheTag, updateTag } from "next/cache"
 import { db } from "@/shared/lib/db/db"
-import { PublicUser, CreateUser, UpdateUser } from "@/shared/lib/types/types"
+import { PublicUser, CreateUser, UpdateUser, User } from "@/shared/lib/types/types"
 import { ResultSetHeader, RowDataPacket } from "mysql2"
 import { hashPassword } from "@/shared/lib/db/password"
 
@@ -21,8 +21,19 @@ export async function getUserById(id: number) {
     cacheLife("minutes")
     cacheTag(`user-${id}`)
     const [users] = await db.query<(PublicUser & RowDataPacket)[]>(
-        "SELECT id, login, email, age FROM users WHERE id = ?",
+        "SELECT id, login, email FROM users WHERE id = ?",
         [id]
+    )
+
+    return users[0] ?? null
+}
+export async function getUserByLogin(login: string) {
+    "use cache"
+    cacheLife("minutes")
+    cacheTag(`user-${login}`)
+    const [users] = await db.query<(User & RowDataPacket)[]>(
+        "SELECT id, login, password, email FROM users WHERE login = ?",
+        [login]
     )
 
     return users[0] ?? null

@@ -52,6 +52,12 @@
             display: flex;
             flex-direction: column;
             gap: 1.17vh;
+
+            .formError {
+                color: $Accent-Red;
+
+                @include Body;
+            }
         }
 
         .buttonFrame {

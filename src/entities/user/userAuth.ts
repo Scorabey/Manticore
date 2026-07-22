@@ -4,20 +4,11 @@ import { addNewUser } from "@/entities/user/users"
 import { redirect } from "next/navigation"
 import { QueryError } from "mysql2"
 import { sessionBinding } from "../session/session"
-
-type State = {
-    success: boolean
-    errors?: {
-        confirm?: string
-        email?: string
-        global?: string
-        login?: string
-    }
-}
+import { FieldState } from "@/shared/lib/types/types"
 
 export async function UserAuth(
-    prevState: State| null, 
-    formData: FormData): Promise<State> {
+    prevState: FieldState| null, 
+    formData: FormData): Promise<FieldState> {
 
     const data = {
         login: formData.get('login') as string,

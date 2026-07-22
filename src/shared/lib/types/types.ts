@@ -17,7 +17,18 @@ export type UpdateUser = Omit<User, 'id'>
 
 export type CreateUser = UpdateUser
 
-type FieldName = 'login' | 'email' | 'password' | 'confirm' | 'server'
+type FieldName = 'login' | 'email' | 'password' | 'confirm' | 'global'
+
+export type FieldState = {
+    success: boolean
+    errors?: {
+        confirm?: string
+        email?: string
+        global?: string
+        login?: string
+        password?: string
+    }
+}
 
 export interface DropdownOption {
     value: string | number
