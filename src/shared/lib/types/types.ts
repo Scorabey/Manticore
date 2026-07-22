@@ -66,7 +66,12 @@ export interface CheckBoxProps
 export interface CheckButtonProps
     extends Omit<React.InputHTMLAttributes<HTMLInputElement>, 'type'> {
         Icon: React.FunctionComponent<React.SVGProps<SVGSVGElement>>
-    }
+}
+export interface SwitcherButtonProps {
+    name: string
+    checked: boolean
+    onChange: (event: React.ChangeEvent<HTMLInputElement>) => void
+}
 
 export interface ControlProps
     extends Omit<React.ButtonHTMLAttributes<HTMLButtonElement>, 'onToggle'> {
@@ -76,7 +81,7 @@ export interface ControlProps
         isOpen: boolean
         onToggle: (isOpen: boolean) => void
         isValueState: boolean
-    }
+}
 
 export interface OptionsProps {
     value: OptionValue

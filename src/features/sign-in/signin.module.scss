@@ -1,2 +1,74 @@
 @use '../../shared/style/mixin.scss' as *;
 @use '../../shared/style/variable.scss' as *;
+
+// Reset style
+
+.articleFrame,
+.articleSubTitle,
+.h3,
+.h4,
+.formWrapper,
+.form,
+.buttonFrame,
+.createButton,
+.spanRedirect,
+.articleLink {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: none;
+  box-sizing: border-box;
+}
+
+// Main style
+
+.articleFrame {
+    display: flex;
+    flex-direction: column;
+    gap: 1.56vh;
+    justify-content: center;
+
+    .articleSubTitle {
+        text-align: center;
+        .h3 {
+            color: $Secondary-Light-Gray;
+            white-space: nowrap;
+
+            @include H3;
+        }
+        .h4 {
+            color: $Secondary-Main;
+
+            @include H4;
+        }
+    }
+    .formWrapper {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: 1.95vh;
+
+        .form {
+            display: flex;
+            flex-direction: column;
+            gap: 1.17vh;
+        }
+
+        .buttonFrame {
+            display: flex;
+            justify-content: center;
+        }
+    }
+}
+
+.spanRedirect {
+    text-align: center;
+    color: $Secondary-Main;
+    @include Body;
+
+    .spanLink {
+        color: $Accent-Blue;
+
+        @include Dotted;
+    }
+}

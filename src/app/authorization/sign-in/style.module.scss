@@ -1,0 +1,58 @@
+@use '../../../shared/style/mixin.scss' as *;
+@use '../../../shared/style/variable.scss' as *;
+
+// Reset style
+
+.page {
+    margin: 0;
+    padding: 0;
+    gap: 0;
+    appearance: none;
+    background: transparent;
+    box-sizing: border-box;
+    border: none;
+
+    .mainFrame {
+        margin: 0;
+        padding: 0;
+        gap: 0;
+        appearance: none;
+        background: transparent;
+        box-sizing: border-box;
+        border: none;
+    }
+    .mainArt {
+        margin: 0;
+        padding: 0;
+        gap: 0;
+        appearance: none;
+        background: transparent;
+        box-sizing: border-box;
+        border: none;
+    }
+}
+
+// Main style
+
+.page {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+
+    .mainFrame {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        height: fit-content;
+        width: fit-content;
+        align-items: stretch;
+    }
+    .mainArt {
+        width: 38.35vw;
+        height: auto;
+        border-radius: 12px 0px 0px 12px;
+        user-select: none;
+    }
+}

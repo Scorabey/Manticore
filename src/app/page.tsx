@@ -1,13 +1,13 @@
 import { PrimaryButton } from "@/shared/ui/buttons/primary/button";
 
-export default async function Home() {
+export default function Home() {
 
   return (
     <>
     <PrimaryButton
-    link={'/authorization'}
+    link={'/authorization/sign-up'}
     themeColor="blue">
-      Sign In
+      Authorization
     </PrimaryButton>
     </>
   );

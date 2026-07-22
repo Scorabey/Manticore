@@ -61,49 +61,51 @@
 @mixin Body {
     font-size: 0.875rem;
     font-weight: 500;
-    line-height: auto;
-    letter-spacing: 0%;
+    line-height: normal;
+    letter-spacing: 0;
 }
 
 @mixin Dotted {
     font-size: 0.875rem;
     font-weight: 500;
-    line-height: auto;
-    letter-spacing: 0%;
-    text-decoration: dotted;
+    line-height: normal;
+    letter-spacing: 0;
+    text-decoration-line: underline;
+    text-decoration-style: dotted;
+    text-decoration-thickness: 15%;
 }
 
 @mixin H5 {
     font-size: 1.125rem;
     font-weight: 500;
-    line-height: auto;
-    letter-spacing: 0%;
+    line-height: normal;
+    letter-spacing: 0;
 }
 
 @mixin H4 {
     font-size: 1.5rem;
     font-weight: 500;
-    line-height: auto;
-    letter-spacing: 0%;
+    line-height: normal;
+    letter-spacing: 0;
 }
 
 @mixin H3 {
     font-size: 2rem;
     font-weight: 500;
-    line-height: auto;
-    letter-spacing: 0%;
+    line-height: normal;
+    letter-spacing: 0;
 }
 
 @mixin Sub-Title {
     font-size: 2.625rem;
     font-weight: 500;
-    line-height: auto;
-    letter-spacing: 0%;
+    line-height: normal;
+    letter-spacing: 0;
 }
 
 @mixin Title {
     font-size: 3.375rem;
     font-weight: 500;
-    line-height: auto;
-    letter-spacing: 0%;
+    line-height: normal;
+    letter-spacing: 0;
 }
