@@ -1,19 +1,21 @@
 'use client'
 
 import style from './signup.module.scss'
-import { useState, useActionState, useEffect, useRef } from 'react'
-import { UserAuth } from '@/entities/user/userAuth'
+import { useState, useActionState, useEffect, useRef, useId } from 'react'
 import { UserErrorFields } from '@/shared/lib/types/types'
 import { Input } from '@/shared/ui/inputs/input'
 import { LockClosedIcon } from '@heroicons/react/24/outline'
 import { PrimaryButton } from '@/shared/ui/buttons/primary/button'
 import Link from 'next/link'
+import { registrationUserService } from '@/entities/user/userService'
 
 export const SignUp = () => {
 
+    const id = useId()
+
     const inputLoginRef = useRef<HTMLInputElement>(null)
 
-    const [state, formAction, isPending] = useActionState(UserAuth, null)
+    const [state, formAction, isPending] = useActionState(registrationUserService, null)
 
     const [fields, setFields] = useState<UserErrorFields>({
         login: {
@@ -157,9 +159,10 @@ export const SignUp = () => {
                     <form 
                     action={formAction}
                     className={style.form}
-                    id='register-form'
+                    id={id}
                     >
                         <Input              // Login input
+                        required
                         ref={inputLoginRef}
                         className={style.formInput}
                         placeholder='Enter login'
@@ -256,7 +259,7 @@ export const SignUp = () => {
                     className={style.buttonFrame}
                     >
                         <PrimaryButton      // Submit button
-                        form='register-form'
+                        form={id}
                         className={style.createButton}
                         isLoading={isPending}
                         themeColor="dark"

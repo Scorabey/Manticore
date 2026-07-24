@@ -5,7 +5,8 @@ import { db } from "@/shared/lib/db/db"
 import { cookies } from "next/headers"
 import { ResultSetHeader } from "mysql2"
 import { Session } from "@/shared/lib/types/types"
-import { SESSION_DAYS } from "./sessionBinding"
+
+const SESSION_DAYS = 30
 
 export async function saveToken(
     userId: number,
@@ -25,12 +26,13 @@ export async function saveToken(
 export async function getSession(token: string) {
     const [rows] = await db.query<Session[]>(
         `SELECT 
-            users.id, 
-            users.login, 
+            users.id,
+            users.login,
             users.email
         FROM sessions
         JOIN users ON users.id = sessions.user_id
         WHERE sessions.token = ?
+        AND sessions.expires_at > NOW()
         LIMIT 1`,
         [token]
     )
@@ -43,13 +45,23 @@ export async function sessionBinding(
 ) {
     const token = crypto.randomBytes(32).toString('hex')
 
+    const hashToken = crypto
+        .createHash('sha256')
+        .update(token)
+        .digest("hex")
+
+    console.log(`
+        Hash: ${hashToken}
+        Token: ${token}
+        `)
+
     const expiresAt = new Date();
     expiresAt.setDate(expiresAt.getDate() + SESSION_DAYS);
 
     const cookiesStore = await cookies();
 
     try {
-        await saveToken(userId, token, expiresAt)
+        await saveToken(userId, hashToken, expiresAt)
 
         cookiesStore.set('session', token, {
             expires: expiresAt,

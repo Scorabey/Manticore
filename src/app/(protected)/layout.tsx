@@ -1,27 +1,17 @@
-import { getSession } from "@/entities/session/session";
-import { cookies } from "next/headers";
-import { redirect } from "next/navigation";
-import { connection } from "next/server";
-import React from "react";
+import { authenticateUserService } from "@/entities/user/userService";
+import { Suspense } from "react";
 
-export default async function Layout({
-    children
-}: {
-    children: React.ReactNode
-}) {
-    await connection()
+export default async function RootLayout({
+  children,
+}: Readonly<{
+  children: React.ReactNode;
+}>) {
 
-    const token = (await cookies()).get('session')?.value
+    await authenticateUserService()
 
-    if(!token) {
-        redirect('/authorization')
-    }
-
-    const session = await getSession(token)
-
-    if(!session) {
-        redirect('/logout')
-    }
-
-    return children
+    return (
+        <Suspense>
+            {children}
+        </Suspense>
+    )
 }

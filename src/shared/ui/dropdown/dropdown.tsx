@@ -14,6 +14,8 @@ export const Dropdown = ({
 
     const dropdownRef = useRef<HTMLDivElement>(null)
 
+    const [isOpen, setIsOpen] = useState(false)
+
     useEffect(() => {
         const handleClickOutside = (event: MouseEvent) => {
             if (
@@ -30,8 +32,6 @@ export const Dropdown = ({
             document.removeEventListener("mousedown", handleClickOutside)
         }
     }, [])
-
-    const [isOpen, setIsOpen] = useState(false)
 
     const [valueSelect, setValueSelect] = useState<DropdownListType>(
         multy ? [] : null

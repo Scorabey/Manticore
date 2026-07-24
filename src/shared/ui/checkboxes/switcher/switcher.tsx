@@ -7,7 +7,6 @@ export const Switcher = ({
     name,
     disabled = false,
     checked = false,
-    className,
     onChange,
     ...rest }: CheckBoxProps) => {
 

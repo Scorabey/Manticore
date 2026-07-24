@@ -5,15 +5,17 @@ import Link from 'next/link'
 import { Input } from '@/shared/ui/inputs/input'
 import { PrimaryButton } from '@/shared/ui/buttons/primary/button'
 import { LockClosedIcon } from '@heroicons/react/24/outline'
-import { UserEntry } from '@/entities/user/userEntry'
-import { useActionState, useState, useEffect, useRef } from 'react'
+import { useActionState, useState, useEffect, useRef, useId } from 'react'
 import { UserErrorFields } from '@/shared/lib/types/types'
+import { loginizationUserService } from '@/entities/user/userService'
 
 export const SignIn = () => {
 
+    const id = useId()
+
     const inputLoginRef = useRef<HTMLInputElement>(null)
 
-    const [state, formAction, isPending] = useActionState(UserEntry, null)
+    const [state, formAction, isPending] = useActionState(loginizationUserService, null)
 
     const [fields, setFields] = useState<UserErrorFields>({
         login: {
@@ -144,9 +146,10 @@ export const SignIn = () => {
                 <form 
                 action={formAction}
                 className={style.form}
-                id='register-form'
+                id={id}
                 >
                     <Input                      // Login input
+                    required
                     ref={inputLoginRef}
                     className={style.formInput}
                     placeholder='Enter login'
@@ -170,6 +173,7 @@ export const SignIn = () => {
                     }}
                     />
                     <Input                      // Password input
+                    required
                     className={style.formInput}
                     placeholder='Password'
                     type='password'
@@ -206,7 +210,7 @@ export const SignIn = () => {
                     themeColor='dark'
                     className={style.createButton}
                     type='submit'
-                    form='register-form'
+                    form={id}
                     >
                         Sign in
                     </PrimaryButton>
