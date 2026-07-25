@@ -7,10 +7,11 @@ export default async function RootLayout({
   children: React.ReactNode;
 }>) {
 
-    await authenticateUserService()
+    const userId = await authenticateUserService()
 
     return (
         <Suspense>
+          <h1>User id: {userId}</h1>
             {children}
         </Suspense>
     )

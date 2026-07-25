@@ -5,6 +5,7 @@ import { db } from "@/shared/lib/db/db"
 import { cookies } from "next/headers"
 import { ResultSetHeader } from "mysql2"
 import { Session } from "@/shared/lib/types/types"
+import { createJWT } from "../services/JWTService"
 
 const SESSION_DAYS = 30
 
@@ -43,17 +44,7 @@ export async function getSession(token: string) {
 export async function sessionBinding(
     userId: number
 ) {
-    const token = crypto.randomBytes(32).toString('hex')
-
-    const hashToken = crypto
-        .createHash('sha256')
-        .update(token)
-        .digest("hex")
-
-    console.log(`
-        Hash: ${hashToken}
-        Token: ${token}
-        `)
+    const token = await createJWT(userId, SESSION_DAYS)
 
     const expiresAt = new Date();
     expiresAt.setDate(expiresAt.getDate() + SESSION_DAYS);
@@ -61,8 +52,6 @@ export async function sessionBinding(
     const cookiesStore = await cookies();
 
     try {
-        await saveToken(userId, hashToken, expiresAt)
-
         cookiesStore.set('session', token, {
             expires: expiresAt,
             httpOnly: true,

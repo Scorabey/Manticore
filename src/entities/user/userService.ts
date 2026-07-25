@@ -8,7 +8,7 @@ import { FieldState } from "@/shared/lib/types/types"
 import { getUserByLogin } from "@/entities/user/users"
 import { verifyPassword } from "@/shared/lib/db/password"
 import { cookies } from "next/headers"
-import crypto from "crypto"
+import { verifyJWT } from "../services/JWTService"
 
 export async function registrationUserService(
     prevState: FieldState| null, 
@@ -142,16 +142,11 @@ export async function authenticateUserService() {
         redirect('/authorization/sign-up')
     }
 
-    const hashToken = crypto
-        .createHash("sha256")
-        .update(token)
-        .digest('hex')
+    const payload = await verifyJWT(token)
 
-    const session = await getSession(hashToken)
-
-    if(!session) {
-        redirect('/logout')
+    if (!payload) {
+        redirect('/authorization/sign-up')
     }
 
-    return session
+    return payload.userId
 }
